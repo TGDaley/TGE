@@ -1,0 +1,13 @@
+
+syntax: glob
+bin/*
+obj/*
+TiltedGlobe/TiltedGlobe.v12.suo
+node_modules
+bower_components
+*.user
+packages
+TiltedGlobe.mdf
+TiltedGlobe_log.ldf
+*.orig
+TiltedGlobe\logs\log.txt

@@ -1,0 +1,514 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\inetpub\sites\TiltedGlobe_Test</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>05/11/2015 17:19:58</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>05/11/2015 17:19:58</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
+      <publishTime>05/11/2015 17:19:58</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.EntityFramework.dll">
+      <publishTime>05/11/2015 17:19:58</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.Owin.dll">
+      <publishTime>05/11/2015 17:19:58</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.dll">
+      <publishTime>05/11/2015 17:19:59</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Host.SystemWeb.dll">
+      <publishTime>05/11/2015 17:19:59</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Cookies.dll">
+      <publishTime>05/11/2015 17:19:59</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.dll">
+      <publishTime>05/11/2015 17:19:59</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Facebook.dll">
+      <publishTime>05/11/2015 17:19:59</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Google.dll">
+      <publishTime>05/11/2015 17:19:59</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.MicrosoftAccount.dll">
+      <publishTime>05/11/2015 17:19:59</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.OAuth.dll">
+      <publishTime>05/11/2015 17:19:59</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Twitter.dll">
+      <publishTime>05/11/2015 17:19:59</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>05/11/2015 17:19:59</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>05/11/2015 17:19:59</publishTime>
+    </File>
+    <File Include="bin/Owin.dll">
+      <publishTime>05/11/2015 17:19:59</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>05/11/2015 17:19:58</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>05/11/2015 17:19:59</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>05/11/2015 17:19:58</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>05/11/2015 17:19:59</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>05/11/2015 17:19:58</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>05/11/2015 17:19:58</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>05/11/2015 17:19:58</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>05/11/2015 17:19:59</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>05/11/2015 17:19:59</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>05/11/2015 17:19:59</publishTime>
+    </File>
+    <File Include="bin/TiltedGlobe.Common.Models.Account.dll">
+      <publishTime>05/15/2015 10:43:47</publishTime>
+    </File>
+    <File Include="bin/TiltedGlobe.Common.Models.ThirdParty.TINCheck.dll">
+      <publishTime>05/15/2015 10:43:47</publishTime>
+    </File>
+    <File Include="bin/TiltedGlobe.dll">
+      <publishTime>05/15/2015 10:43:48</publishTime>
+    </File>
+    <File Include="bin/TiltedGlobe.Models.Account.dll">
+      <publishTime>05/15/2015 10:43:47</publishTime>
+    </File>
+    <File Include="bin/TiltedGlobe.Queries.Account.dll">
+      <publishTime>05/15/2015 10:43:48</publishTime>
+    </File>
+    <File Include="bin/TiltedGlobe.ThirdParty.TINCheck.dll">
+      <publishTime>05/15/2015 10:43:48</publishTime>
+    </File>
+    <File Include="bin/TiltedGlobe.Utilities.Encryption.dll">
+      <publishTime>05/15/2015 10:43:47</publishTime>
+    </File>
+    <File Include="bin/TiltedGlobe.Web.ExceptionFilters.dll">
+      <publishTime>05/15/2015 10:43:47</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>05/11/2015 17:19:59</publishTime>
+    </File>
+    <File Include="Content/assets/Logo_2_noBG.png">
+      <publishTime>05/11/2015 17:19:53</publishTime>
+    </File>
+    <File Include="Content/assets/Logo_white.png">
+      <publishTime>05/11/2015 17:19:53</publishTime>
+    </File>
+    <File Include="Content/assets/SiteBackground_1280_Final.jpg">
+      <publishTime>05/11/2015 17:19:53</publishTime>
+    </File>
+    <File Include="Content/assets/u33.png">
+      <publishTime>05/11/2015 17:19:53</publishTime>
+    </File>
+    <File Include="Content/bootstrap.css">
+      <publishTime>05/11/2015 17:19:53</publishTime>
+    </File>
+    <File Include="Content/bootstrap.min.css">
+      <publishTime>05/11/2015 17:19:53</publishTime>
+    </File>
+    <File Include="Content/Site.css">
+      <publishTime>05/14/2015 17:24:16</publishTime>
+    </File>
+    <File Include="Content/text/producer_contract.txt">
+      <publishTime>05/11/2015 17:19:53</publishTime>
+    </File>
+    <File Include="favicon.ico">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.eot">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.svg">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.woff">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>05/11/2015 17:19:53</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Scripts/angular-animate.js">
+      <publishTime>05/11/2015 17:19:53</publishTime>
+    </File>
+    <File Include="Scripts/angular-animate.min.js">
+      <publishTime>05/11/2015 17:19:53</publishTime>
+    </File>
+    <File Include="Scripts/angular-animate.min.js.map">
+      <publishTime>05/11/2015 17:19:53</publishTime>
+    </File>
+    <File Include="Scripts/angular-aria.js">
+      <publishTime>05/11/2015 17:19:53</publishTime>
+    </File>
+    <File Include="Scripts/angular-aria.min.js">
+      <publishTime>05/11/2015 17:19:53</publishTime>
+    </File>
+    <File Include="Scripts/angular-aria.min.js.map">
+      <publishTime>05/11/2015 17:19:53</publishTime>
+    </File>
+    <File Include="Scripts/angular-cookies.js">
+      <publishTime>05/11/2015 17:19:53</publishTime>
+    </File>
+    <File Include="Scripts/angular-cookies.min.js">
+      <publishTime>05/11/2015 17:19:53</publishTime>
+    </File>
+    <File Include="Scripts/angular-cookies.min.js.map">
+      <publishTime>05/11/2015 17:19:53</publishTime>
+    </File>
+    <File Include="Scripts/angular-csp.css">
+      <publishTime>05/11/2015 17:19:53</publishTime>
+    </File>
+    <File Include="Scripts/angular-loader.js">
+      <publishTime>05/11/2015 17:19:53</publishTime>
+    </File>
+    <File Include="Scripts/angular-loader.min.js">
+      <publishTime>05/11/2015 17:19:53</publishTime>
+    </File>
+    <File Include="Scripts/angular-loader.min.js.map">
+      <publishTime>05/11/2015 17:19:53</publishTime>
+    </File>
+    <File Include="Scripts/angular-messages.js">
+      <publishTime>05/11/2015 17:19:53</publishTime>
+    </File>
+    <File Include="Scripts/angular-messages.min.js">
+      <publishTime>05/11/2015 17:19:53</publishTime>
+    </File>
+    <File Include="Scripts/angular-messages.min.js.map">
+      <publishTime>05/11/2015 17:19:53</publishTime>
+    </File>
+    <File Include="Scripts/angular-mocks.js">
+      <publishTime>05/11/2015 17:19:53</publishTime>
+    </File>
+    <File Include="Scripts/angular-no-captcha/.bower.json">
+      <publishTime>05/11/2015 17:19:53</publishTime>
+    </File>
+    <File Include="Scripts/angular-no-captcha/bower.json">
+      <publishTime>05/11/2015 17:19:53</publishTime>
+    </File>
+    <File Include="Scripts/angular-no-captcha/example/index.html">
+      <publishTime>05/11/2015 17:19:53</publishTime>
+    </File>
+    <File Include="Scripts/angular-no-captcha/example/server.js">
+      <publishTime>05/11/2015 17:19:53</publishTime>
+    </File>
+    <File Include="Scripts/angular-no-captcha/karma.conf.js">
+      <publishTime>05/11/2015 17:19:53</publishTime>
+    </File>
+    <File Include="Scripts/angular-no-captcha/LICENSE">
+      <publishTime>05/11/2015 17:19:53</publishTime>
+    </File>
+    <File Include="Scripts/angular-no-captcha/package.json">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Scripts/angular-no-captcha/README.md">
+      <publishTime>05/11/2015 17:19:53</publishTime>
+    </File>
+    <File Include="Scripts/angular-no-captcha/src/angular-no-captcha.js">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Scripts/angular-resource.js">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Scripts/angular-resource.min.js">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Scripts/angular-resource.min.js.map">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Scripts/angular-route.js">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Scripts/angular-route.min.js">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Scripts/angular-route.min.js.map">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Scripts/angular-sanitize.js">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Scripts/angular-sanitize.min.js">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Scripts/angular-sanitize.min.js.map">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Scripts/angular-scenario.js">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Scripts/angular-touch.js">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Scripts/angular-touch.min.js">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Scripts/angular-touch.min.js.map">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Scripts/angular-ui-router.min.js">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Scripts/angular-ui/ui-bootstrap-tpls.js">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Scripts/angular-ui/ui-bootstrap-tpls.min.js">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Scripts/angular-ui/ui-bootstrap.js">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Scripts/angular-ui/ui-bootstrap.min.js">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Scripts/angular.js">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Scripts/angular.min.js">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Scripts/angular.min.js.map">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.js">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.min.js">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Scripts/Controllers/LandingPageController.js">
+      <publishTime>05/11/2015 17:19:53</publishTime>
+    </File>
+    <File Include="Scripts/Controllers/LoginController.js">
+      <publishTime>05/11/2015 17:19:53</publishTime>
+    </File>
+    <File Include="Scripts/Controllers/ProducerRegistrationController.js">
+      <publishTime>05/14/2015 12:08:28</publishTime>
+    </File>
+    <File Include="Scripts/Controllers/ViewerRegistrationController.js">
+      <publishTime>05/14/2015 16:19:58</publishTime>
+    </File>
+    <File Include="Scripts/Directives/emailValidator.js">
+      <publishTime>05/14/2015 16:46:17</publishTime>
+    </File>
+    <File Include="Scripts/Directives/passwordValidator.js">
+      <publishTime>05/14/2015 16:45:16</publishTime>
+    </File>
+    <File Include="Scripts/errors.json">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Scripts/Factories/AuthHttpResponseInterceptor.js">
+      <publishTime>05/11/2015 17:19:53</publishTime>
+    </File>
+    <File Include="Scripts/Factories/LoginFactory.js">
+      <publishTime>05/11/2015 17:19:53</publishTime>
+    </File>
+    <File Include="Scripts/Factories/ProducerRegistrationFactory.js">
+      <publishTime>05/11/2015 17:19:53</publishTime>
+    </File>
+    <File Include="Scripts/Factories/ViewerRegistrationFactory.js">
+      <publishTime>05/15/2015 10:29:33</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.js">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.min.js">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.min.map">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Scripts/modernizr-2.6.2.js">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Scripts/ng-country-select/.bower.json">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Scripts/ng-country-select/bower.json">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Scripts/ng-country-select/coffeelint.json">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Scripts/ng-country-select/dist/ng-country-select.js">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Scripts/ng-country-select/dist/ng-country-select.min.js">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Scripts/ng-country-select/gulpfile.js">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Scripts/ng-country-select/LICENSE.txt">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Scripts/ng-country-select/package.json">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Scripts/ng-country-select/README.md">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Scripts/TiltedGlobe.js">
+      <publishTime>05/14/2015 16:34:26</publishTime>
+    </File>
+    <File Include="Scripts/version.json">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Scripts/_references.js">
+      <publishTime>05/14/2015 16:20:16</publishTime>
+    </File>
+    <File Include="Views/Account/Login.cshtml">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Views/Account/ProducerRegistration1.cshtml">
+      <publishTime>05/14/2015 12:42:24</publishTime>
+    </File>
+    <File Include="Views/Account/ProducerRegistration2.cshtml">
+      <publishTime>05/14/2015 13:37:17</publishTime>
+    </File>
+    <File Include="Views/Account/ProducerRegistration3.cshtml">
+      <publishTime>05/11/2015 17:45:02</publishTime>
+    </File>
+    <File Include="Views/Account/ProducerRegistration4.cshtml">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Views/Account/Register1.cshtml">
+      <publishTime>05/11/2015 17:45:26</publishTime>
+    </File>
+    <File Include="Views/Account/RegistrationPaypal.cshtml">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Views/Account/SingleViewerRegistration2.cshtml">
+      <publishTime>05/14/2015 14:34:22</publishTime>
+    </File>
+    <File Include="Views/Account/SingleViewerRegistration3.cshtml">
+      <publishTime>05/14/2015 16:13:29</publishTime>
+    </File>
+    <File Include="Views/Account/ViewerRegistration1.cshtml">
+      <publishTime>05/14/2015 16:47:31</publishTime>
+    </File>
+    <File Include="Views/Billinginfos/Create.cshtml">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Views/Billinginfos/Delete.cshtml">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Views/Billinginfos/Details.cshtml">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Views/Billinginfos/Edit.cshtml">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Views/Billinginfos/Index.cshtml">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Views/Channels/Create.cshtml">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Views/Channels/Delete.cshtml">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Views/Channels/Details.cshtml">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Views/Channels/Edit.cshtml">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Views/Channels/Index.cshtml">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Views/Genres/Create.cshtml">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Views/Genres/Delete.cshtml">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Views/Genres/Details.cshtml">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Views/Genres/Edit.cshtml">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Views/Genres/Index.cshtml">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Views/Home/Index.cshtml">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Views/Routes/Dashboard.cshtml">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Views/Shows/Create.cshtml">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Views/Shows/Delete.cshtml">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Views/Shows/Details.cshtml">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Views/Shows/Edit.cshtml">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Views/Shows/Index.cshtml">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Views/Users/Create.cshtml">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Views/Users/Delete.cshtml">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Views/Users/Details.cshtml">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Views/Users/Edit.cshtml">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Views/Users/Index.cshtml">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>05/11/2015 17:19:54</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>05/15/2015 10:43:49</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

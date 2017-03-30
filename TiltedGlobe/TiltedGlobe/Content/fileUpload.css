@@ -1,0 +1,21 @@
+﻿.fileUpload {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    display: inline;
+}
+.fileUpload input.upload {
+    position: absolute;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    left: -9999px;
+}
+.fileUpload button {
+    padding: 7px 30px;
+    border-radius: 6pt;
+    color: #ffffff;
+    background-color: #7e7c7d;
+    border: 0;
+    font-weight: 700;
+    width: 100%;
+}

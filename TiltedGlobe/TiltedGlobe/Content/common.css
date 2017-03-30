@@ -1,0 +1,126 @@
+﻿input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+input[type=checkbox],input[type=radio] {
+    margin: 0;
+}
+.stretch {
+    width: 100%;
+}
+.stretch-medium {
+    width: 50%;
+}
+.form-label-question {
+    display: inline-block;
+    width: 100%;
+    padding-left: 5px;
+}
+.align-right {
+    float: right;
+}
+
+.nudge-right-small {
+    margin-left:5px;     
+}
+.nudge-right {
+    margin-left:10px;
+}
+
+.nudge-right-large {
+    margin-left:15px;     
+}
+.nudge-right-xxl {
+    margin-left:25px;     
+}
+.nudge-left-large {
+    margin-right: 15px;
+}
+.nudge-left-xxl {
+    margin-right:25px;     
+}
+.nudge-down-small {
+    margin-top: 5px;
+}
+.nudge-down-large {
+    margin-top: 15px;
+}
+.nudge-down-xlarge {
+    margin-top: 20px;
+}
+[ng-click] {
+    cursor: pointer;
+}
+[ui-sref] {
+    color: inherit;
+}
+[ui-sref]:hover {
+    color: inherit;
+}
+
+.info-tool-tip {
+    font-size: 10px;
+    font-weight: 100;
+    margin: 1px;
+    position: absolute;
+    display: none;
+    width: 200px;
+    padding: 20px;
+    background-color: beige;
+    left: -50px;
+    border-radius: 2px;
+    top: 30px;
+    border: 1px solid #000000;
+    color: #000000;
+    text-align: left;
+    z-index: 1;
+}
+
+.info-tool-tip:after {
+    content: '';
+    position: absolute;
+    height: 0;
+    width: 0;
+    border: 1px solid #000000;
+    border-top-width: 0;
+	border-left: 15px solid transparent;
+	border-right: 15px solid transparent;
+	border-bottom: 15px solid beige;
+    top: -15px;
+    left: 39px;
+}
+.ucase {
+    text-transform:uppercase;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.electrify {
+    color: #33CCFF;
+}
+
+.help-block{
+    color: crimson;
+    font-size: 11px;
+    display: inline-block;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+.validation-container {
+    height: 20px;
+}
+.small-font {
+    font-size: 8pt;
+}
+.label-header {
+    font-size: 10pt;
+    font-weight: 700;
+}
+
+.hide {
+    display: none;
+}

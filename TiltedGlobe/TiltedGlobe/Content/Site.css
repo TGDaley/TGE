@@ -1,0 +1,310 @@
+﻿html {
+    height: 100%;
+}
+
+body {
+    background-image: url("assets/SiteBackground_1280_Final.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-color: #000000;
+    min-height: 100%;
+    color: #ffffff;
+    font-family: 'Oxygen';
+}
+
+.header-main {
+    width: 100%;
+    height: 100px;
+    background-image: url("assets/tglogowhite.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.mainContent {
+    min-height: 100%;
+}
+
+.producerBox2 {
+    margin-left: auto;
+    margin-right: auto;
+    height: 650px;
+    width: 670px;
+    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.55);
+    padding: 15px 30px;
+    border-radius: 8pt;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.singleViewerBox2{
+    margin-left: auto;
+    margin-right: auto;
+    height: 582px;
+    width: 700px;
+    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.55);
+    padding: 15px 30px;
+    border-radius: 8pt;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.commercialViewerBox2 {
+    margin-left: auto;
+    margin-right: auto;
+    height: 620px;
+    width: 700px;
+    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.55);
+    padding: 15px 30px;
+    border-radius: 8pt;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.commercialViewerBox3 {
+    margin-left: auto;
+    margin-right: auto;
+    height: 625px;
+    width: 700px;
+    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.55);
+    padding: 15px 30px;
+    border-radius: 8pt;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.commercialViewerBox4 {
+    margin-left: auto;
+    margin-right: auto;
+    height: 850px;
+    width: 700px;
+    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.55);
+    padding: 15px 30px;
+    border-radius: 8pt;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.producerBox3 {
+    margin-left: auto;
+    margin-right: auto;
+    height: 416px;
+    width: 670px;
+    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.55);
+    padding: 15px 30px;
+    border-radius: 8pt;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.producerBox4 {
+    margin-left: auto;
+    margin-right: auto;
+    height: 316px;
+    width: 670px;
+    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.55);
+    padding: 15px 30px;
+    border-radius: 8pt;
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.singleViewerBox3 {
+    margin-left: auto;
+    margin-right: auto;
+    height: 260px;
+    width: 670px;
+    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.55);
+    padding: 15px 30px;
+    border-radius: 8pt;
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.commercialViewerBox5 {
+    margin-left: auto;
+    margin-right: auto;
+    height: 260px;
+    width: 670px;
+    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.55);
+    padding: 15px 30px;
+    border-radius: 8pt;
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.tgCaptcha {
+    display: flex;
+    flex-flow: column nowrap;
+    background-color: transparent;
+    padding: 5px;
+    width: 305px;
+}
+
+.recaptcha_image {
+    border-radius: 5pt;
+    background-color: #fff;
+    opacity: 1;
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.fItem {
+    /*flex: 1 0 auto;*/
+    padding: 0px 10px;
+    justify-content: space-between;
+}
+
+.fHalf {
+    min-width: 40%;
+    margin: initial;
+}
+
+.fEnd{
+    justify-content: flex-end;
+}
+
+.fMaxThird{
+    max-width: 33%;
+}
+
+.clear {
+    clear: both;
+}
+
+.fItemFull {
+    min-width: 100%;
+}
+
+.form-groupF {
+    display: flex;
+}
+
+.fItem .g-recaptcha {
+    transform: scale(0.77);
+    transform-origin: 0 0;
+}
+
+.flexAcrossFullOuter {
+    justify-content: space-around;
+    margin: auto;
+}
+
+.fWide {
+    min-width: 64.5%;
+}
+
+.flexAcross {
+    display: flex;
+    flex: 1 0 auto;
+    flex-flow: row nowrap;
+    vertical-align:top;
+}
+
+.spacedList {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+    font-size: 12px;
+    font-weight: normal;
+    min-height: 100%;
+    padding: 8px;
+    list-style-position: inside;
+}
+
+.spacedList li {
+    padding-bottom: 10px;
+}
+/*form label, input, .smallLabel {
+    font-weight: 700;
+    font-size: 11px;
+    display: block;
+    float: left;
+}*/
+
+li.listNone {
+    list-style: none;
+}
+
+.flex {
+    display: flex;
+}
+
+.login-column {
+    padding: 0 10px;
+    vertical-align: middle;
+    width: 195px;
+    margin-right: 15px;
+}
+
+.border-right {
+    border-right: 2px solid #515151;
+    min-height: 100%;
+}
+
+.largeLabel {
+    font-weight: 700;
+    font-size: 12pt;
+}
+.xsmall-label {
+    font-size: 10px;
+}
+
+.hyperlink {
+    text-decoration: underline;
+}
+
+
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #fff;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #fff;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #fff;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+   color:    #fff;
+}
+
+.labels-left {
+    float: left;
+}
+.form-column-registration-spacing {
+    padding: 0 10px;   
+}
+
+.form-row-registration-spacing {
+    padding-bottom: 10px;
+}
+
+
+.form-registration-signature {
+    width: 200px;
+}
+
+.form-registration-contract-agree {
+    width: 100px;
+}
+
+.remember-me {
+    font-size: 10px;
+    padding-top: 3px;
+    font-weight: normal;
+}
+
+.single-commercial-viewer-options {
+    width: 400px;
+    font-size: 14px;
+}

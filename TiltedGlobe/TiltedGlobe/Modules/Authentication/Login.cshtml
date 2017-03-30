@@ -1,0 +1,34 @@
+﻿
+<div class="flex-container">
+    <div class="border-right login-column flex-item-stretch">
+        <span class="largeLabel">LOGIN</span>
+        <div><span class="help-block">&nbsp;</span><span class="help-block">{{errorMessage}}</span></div>
+        <form>
+            <p>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="EMAIL ADDRESS" ng-model="loginForm.username" id="emailAddress" required />
+                </div>
+
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="PASSWORD" ng-model="loginForm.password" id="password" required />
+                </div>
+                <a ui-sref="forgotpassword" class="xsmall-label hyperlink">FORGOT PASSWORD?</a>
+            </p>
+            <p>
+                <div class="flex-container">
+                    <div class="flex-item-stretch nudge-down-small">
+                        <input type="checkbox" id="rememberMe" ng-model="LoginForm.rememberMe" class="nudge-right-small" />
+                        <label for="rememberMe" class="remember-me">REMEMBER ME</label>
+                    </div>
+                    <div class="fEnd">
+                        <tg-button button-class="button-blue stretch" text="Login" text-label-class="buttonLabel" action="ladda.login" on-click="login()"></tg-button>
+                    </div>
+                </div>
+            </p>
+        </form>
+    </div>
+    <div class="flex-item-stretch">
+        <span class="largeLabel">NEW USERS</span>
+        <tg-button button-class="button-gray" text="REGISTER HERE!" text-label-class="buttonLabel" left-icon-class="fa fa-pencil-square-o" ui-sref="register"></tg-button>
+    </div>
+</div>

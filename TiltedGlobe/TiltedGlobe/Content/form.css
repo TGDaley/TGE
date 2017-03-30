@@ -1,0 +1,17 @@
+﻿.form-control {
+    border: 2px solid #fff;
+    border-radius: 5pt;
+    background: transparent !important;
+    color: #ffffff;
+    font-size: 11px;
+    width: 100%;
+    padding: 5px;
+    border-color: #949494;
+}
+option {
+    background: #000000;
+}
+
+.form-control.ng-invalid.ng-touched{
+    border-color: crimson !important;
+}

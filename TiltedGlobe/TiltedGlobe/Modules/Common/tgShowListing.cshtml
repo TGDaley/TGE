@@ -1,0 +1,92 @@
+﻿<div>
+    <div ng-if="selectedShow">
+            <div class="flexAcross">
+                <div ng-click="changeShowListingView()"><span class="fa fa-arrow-circle-left" style="font-size:20px"></span></div>
+                <div class="video" style="background-image: url('{{selectedShow.thumbNailLink}}'); margin-left: 20px; width: 130px; height: 73px; background-size: 130px 73px;">
+
+                </div>
+                <div style="flex-grow: 1; margin-left:20px; ">
+                    <div>
+                        <div style="display: flex">
+                            <div style="font-size:20px;display:inline-block;flex-grow:1;">{{selectedShow.name}}</div>
+                            <div style="display: inline-block;"><tg-button button-class="button-lavender" button-class="button-lavender" left-icon-class="fa fa-pencil-square-o" text-label-class="buttonLabel" text="EDIT LISTING" on-click="edit('editShow')"></tg-button></div>
+                        </div>
+                        <div class="electrify">{{selectedShow.showDate | date : ngDateFormat}}</div>
+                        <div style="display: flex; justify-content: space-between; ">
+                            <div>TYPE: <span class="show-listing-grayish">{{selectedShow.showType.name}}</span></div>
+                            <div>GENRE: <span class="show-listing-grayish">{{selectedShow.genre.name}}</span></div>
+                            <div>SHOW RATING: <span color="show-listing-grayish">{{selectedShow.ratingText }}</span></div>
+                        </div>
+                        <div class="description">{{selectedShow.description}}</div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <div>Running Time: <span class="show-listing-grayish">{{selectedShow.estimatedDuration}} mins</span></div>
+                            <div ng-if="show.isDelayedViewingEnabled"><span class="fa fa-check-square-o" style="margin-right: 4px"></span><span style="color: #949494;">Delayed Viewing</span></div>
+                            <div style="display:inline-flex"><div class="record-icon"></div><span>Set To Record</span></div>
+                            <div><span class="fa fa-file-o" style="margin-right: 4px"></span><div class="electrify" style="display:inline-block" ng-click="viewPlayBill()">View Playbill</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flexAcross" style="margin-right:25px;align-items: center;" >
+                <div>
+                    <span class="fa fa-ticket" style="font-size:85pt; color:#515151"></span>
+                    <span class="fa fa-ticket" style="font-size:85pt; color:#5E5E5E;position:relative;top:-10px;left:-28px"></span>
+                </div>
+                <div>
+                    <div style="display: inline-block;">
+                        <div>VIEWER TICKETS:</div>
+                        <div>
+                            <span style="color: #949494;">{{selectedShow.singleViewerBasePrice | currency}}</span>
+                            <span style="margin-left:15px">{{selectedShow.singleViewerTicketsSold}}</span><span style="color: #949494;">/{{selectedShow.singleViewerTicketsIssued}}</span>
+                        </div>
+                    </div>
+                    <div style="display: inline-block;margin-left: 30px" ng-if="selectedShow.allowCommercialViewersToStream">
+                        <div>COMMERCIAL TICKETS:</div>
+                        <div>
+                            <span style="color: #949494;">{{selectedShow.commercialViewerBasePrice | currency}}</span>
+                            <span style="margin-left:15px">{{selectedShow.commercialViewerTicketsSold}}</span><span style="color: #949494;">/{{selectedShow.commercialViewerTicketsIssued}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="seperator" />
+        
+        <div style="margin-left: 25px;">
+            <div style="width: 80%; display: inline-block">
+                <tg-button button-class="button-lavender"
+                               left-icon-class="fa fa-video-camera"
+                               text-label-class="button-label"
+                               text="LIVE"
+                               on-click="goLive()">
+                </tg-button>
+            </div>
+            <div style="display:inline-block;">
+                <span class="fa fa-question-circle"></span><span class="electrify" style="margin-left:5px;">STREAMING HELP</span>
+            </div>
+            <amp player="player"></amp>
+        </div>
+    </div>
+    <div ng-repeat="show in showList" ng-if="!selectedShow">
+            <div class="flex-container">
+                <div class="video" style="background-image: url('{{show.thumbNailLink}}'); ">
+                    <div  class="awaiting-approval">
+                        <div class="fa fa-clock-o awaiting-approval-clock-holder" ></div>
+                        <div>Awaiting Approval</div>
+                    </div>
+                </div>
+                <!--SECOND COLUMN-->
+                <div class="flex-item-stretch listing-show-details nudge-right-large nudge-left-large">
+                    <div><span class="date">{{show.showDate | date : ngDateFormat}}</span><span class="title" ng-click="changeShowListingView(show)">{{show.name}}</span></div>
+                    <div class="description">{{show.description}}</div>
+                </div>
+
+                <!--THIRD COLUMN-->
+                
+                <div class="ticket">
+                    <span class="fa fa-ticket primary-font-color"></span><span class="nudge-right-small">{{show.ticketsSold}} Sold</span><br />
+                    <span ng-if="false"><span class="fa fa-flag primary-font-color"></span><span class="nudge-right-small">SOLD OUT</span></span>
+                </div>
+            </div>
+        <hr class="seperator" />
+    </div>
+</div>

@@ -1,0 +1,22 @@
+﻿.flex-item {
+    flex: 1 0 auto;
+    padding-right: 10px;
+    justify-content: space-between;
+}
+
+.flex-item-stretch {
+    flex-grow: 1;
+}
+
+.flex-item-content {
+    display: inline-block;
+    padding-left: 10px;
+}
+
+.flex-container {
+    display: flex;
+}
+
+.flex-space-content {
+    justify-content: space-between;
+}

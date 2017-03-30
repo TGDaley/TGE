@@ -1,0 +1,705 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.TinCheck.com/WebServices/PVSService/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.TinCheck.com/WebServices/PVSService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.TinCheck.com/WebServices/PVSService/">
+      <s:element name="Version">
+        <s:complexType />
+      </s:element>
+      <s:element name="VersionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="VersionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ServiceStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CurUser" type="tns:UserClass" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UserClass">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserLogin" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserPassword" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserEncryption" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ServiceStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceStatusResult" type="tns:ServiceStatusResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ServiceStatusResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:ServiceStatus" />
+          <s:element minOccurs="0" maxOccurs="1" name="CallsRemaining" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ServiceStatus">
+        <s:restriction base="s:string">
+          <s:enumeration value="LoginFailed" />
+          <s:enumeration value="OK" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="ValidateTinName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TinName" type="tns:TinNameClass" />
+            <s:element minOccurs="0" maxOccurs="1" name="CurUser" type="tns:UserClass" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="TinNameClass">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TIN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Encryption" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Giin" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ValidateTinNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ValidateTinNameResult" type="tns:TINNAME_RESPONSE" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="TINNAME_RESPONSE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TINNAME_CODE" type="s:byte" />
+          <s:element minOccurs="0" maxOccurs="1" name="TINNAME_DETAILS" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DMF_CODE" type="s:byte" />
+          <s:element minOccurs="0" maxOccurs="1" name="DMF_DETAILS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DMF_DATA" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="EIN_CODE" type="s:byte" />
+          <s:element minOccurs="0" maxOccurs="1" name="EIN_DETAILS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EIN_DATA" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="GIIN_CODE" type="s:byte" />
+          <s:element minOccurs="0" maxOccurs="1" name="GIIN_DETAILS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GIIN_DATA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="STATUS" type="tns:ServiceStatusResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ValidateListMatch">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TinName" type="tns:TinNameClass" />
+            <s:element minOccurs="0" maxOccurs="1" name="CurUser" type="tns:UserClass" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateListMatchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ValidateListMatchResult" type="tns:LISTMATCH_RESPONSE" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="LISTMATCH_RESPONSE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="LISTSMATCH_CODE" type="s:byte" />
+          <s:element minOccurs="0" maxOccurs="1" name="LISTSMATCH_DETAILS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OFAC_RESULT" type="tns:OFAC_RESPONSE" />
+          <s:element minOccurs="0" maxOccurs="1" name="NV_RESULT" type="tns:NV_RESPONSE" />
+          <s:element minOccurs="0" maxOccurs="1" name="MS_RESULT" type="tns:MS_RESPONSE" />
+          <s:element minOccurs="0" maxOccurs="1" name="IL_RESULT" type="tns:IL_RESPONSE" />
+          <s:element minOccurs="0" maxOccurs="1" name="MO_RESULT" type="tns:MO_RESPONSE" />
+          <s:element minOccurs="0" maxOccurs="1" name="NJ_RESULT" type="tns:NJ_RESPONSE" />
+          <s:element minOccurs="0" maxOccurs="1" name="EPLS_RESULT" type="tns:EPLS_RESPONSE" />
+          <s:element minOccurs="0" maxOccurs="1" name="DPL_Result" type="tns:DPL_RESPONSE" />
+          <s:element minOccurs="0" maxOccurs="1" name="PEP_Result" type="tns:PEP_RESPONSE" />
+          <s:element minOccurs="0" maxOccurs="1" name="HHS_RESULT" type="tns:HHS_RESPONSE" />
+          <s:element minOccurs="0" maxOccurs="1" name="STATUS" type="tns:ServiceStatusResponse" />
+          <s:element minOccurs="0" maxOccurs="1" name="Results" type="tns:ArrayOfResult" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OFAC_RESPONSE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="OFAC_CODE" type="s:byte" />
+          <s:element minOccurs="0" maxOccurs="1" name="OFAC_DETAILS" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="OFAC_COUNT" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="OFAC_DATA" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NV_RESPONSE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="NV_CODE" type="s:byte" />
+          <s:element minOccurs="0" maxOccurs="1" name="NV_DETAILS" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NV_COUNT" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="NV_DATA" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MS_RESPONSE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="MS_CODE" type="s:byte" />
+          <s:element minOccurs="0" maxOccurs="1" name="MS_DETAILS" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MS_COUNT" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="MS_DATA" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="IL_RESPONSE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IL_CODE" type="s:byte" />
+          <s:element minOccurs="0" maxOccurs="1" name="IL_DETAILS" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IL_COUNT" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="IL_DATA" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MO_RESPONSE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="MO_CODE" type="s:byte" />
+          <s:element minOccurs="0" maxOccurs="1" name="MO_DETAILS" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MO_COUNT" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="MO_DATA" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NJ_RESPONSE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="NJ_CODE" type="s:byte" />
+          <s:element minOccurs="0" maxOccurs="1" name="NJ_DETAILS" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NJ_COUNT" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="NJ_DATA" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EPLS_RESPONSE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="EPLS_CODE" type="s:byte" />
+          <s:element minOccurs="0" maxOccurs="1" name="EPLS_DETAILS" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="EPLS_COUNT" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="EPLS_DATA" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DPL_RESPONSE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="DPL_CODE" type="s:byte" />
+          <s:element minOccurs="0" maxOccurs="1" name="DPL_DETAILS" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DPL_COUNT" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DPL_DATA" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PEP_RESPONSE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="PEP_CODE" type="s:byte" />
+          <s:element minOccurs="0" maxOccurs="1" name="PEP_DETAILS" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PEP_COUNT" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PEP_DATA" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="HHS_RESPONSE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="HHS_CODE" type="s:byte" />
+          <s:element minOccurs="0" maxOccurs="1" name="HHS_DETAILS" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="HHS_COUNT" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="HHS_DATA" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Result" nillable="true" type="tns:Result" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Result">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Type" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:unsignedByte" />
+          <s:element minOccurs="0" maxOccurs="1" name="Details" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Count" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ValidateTinNameAddressListMatch">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TinName" type="tns:TinNameClass" />
+            <s:element minOccurs="0" maxOccurs="1" name="USPSAddress" type="tns:USPSAddressClass" />
+            <s:element minOccurs="0" maxOccurs="1" name="CurUser" type="tns:UserClass" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="USPSAddressClass">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Address1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Zip5" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Zip4" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ValidateTinNameAddressListMatchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ValidateTinNameAddressListMatchResult" type="tns:TINNAME_ADDRESS_LISTMATCH_RESPONSE" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="TINNAME_ADDRESS_LISTMATCH_RESPONSE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="REQUESTID" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="REQUEST_STATUS" type="s:byte" />
+          <s:element minOccurs="0" maxOccurs="1" name="REQUEST_DETAILS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TINNAME_RESULT" type="tns:TINNAME_RESPONSE" />
+          <s:element minOccurs="0" maxOccurs="1" name="LISTMATCH_RESULT" type="tns:LISTMATCH_RESPONSE" />
+          <s:element minOccurs="0" maxOccurs="1" name="ADDRESS_RESULT" type="tns:ADDRESS_RESPONSE" />
+          <s:element minOccurs="0" maxOccurs="1" name="STATUS" type="tns:ServiceStatusResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ADDRESS_RESPONSE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ADDRESS_CODE" type="s:byte" />
+          <s:element minOccurs="0" maxOccurs="1" name="ADDRESS_DETAILS" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="BulkTinCheckObject">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:ArrayOfBulkTinCheckRequestObject" />
+            <s:element minOccurs="0" maxOccurs="1" name="currentUser" type="tns:UserClass" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBulkTinCheckRequestObject">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="BulkTinCheckRequestObject" nillable="true" type="tns:BulkTinCheckRequestObject" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BulkTinCheckRequestObject">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TinType" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Tin" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReferenceNumber" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="BulkTinCheckObjectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BulkTinCheckObjectResult" type="tns:BulkResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="BulkResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="BulkTinCheck">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:BulkTinCheckRequest" />
+            <s:element minOccurs="0" maxOccurs="1" name="currentUser" type="tns:UserClass" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="BulkTinCheckRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="Filename" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="BulkTinCheckResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BulkTinCheckResult" type="tns:BulkResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BulkTinCheckStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="currentUser" type="tns:UserClass" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BulkTinCheckStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BulkTinCheckStatusResult" type="tns:BulkUploadStatusResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="BulkUploadStatusResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BulkResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="StatusItems" type="tns:ArrayOfBulkUploadStatusItem" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfBulkUploadStatusItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="BulkUploadStatusItem" nillable="true" type="tns:BulkUploadStatusItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BulkUploadStatusItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="DateRequested" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Processed" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="BulkTinCheckResult">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="requestId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="currentUser" type="tns:UserClass" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BulkTinCheckResultResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BulkTinCheckResultResult" type="tns:BulkTinCheckFileResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="BulkTinCheckFileResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BulkResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Data" type="s:base64Binary" />
+              <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="VersionSoapIn">
+    <wsdl:part name="parameters" element="tns:Version" />
+  </wsdl:message>
+  <wsdl:message name="VersionSoapOut">
+    <wsdl:part name="parameters" element="tns:VersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ServiceStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:ServiceStatus" />
+  </wsdl:message>
+  <wsdl:message name="ServiceStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:ServiceStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="ValidateTinNameSoapIn">
+    <wsdl:part name="parameters" element="tns:ValidateTinName" />
+  </wsdl:message>
+  <wsdl:message name="ValidateTinNameSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidateTinNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="ValidateListMatchSoapIn">
+    <wsdl:part name="parameters" element="tns:ValidateListMatch" />
+  </wsdl:message>
+  <wsdl:message name="ValidateListMatchSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidateListMatchResponse" />
+  </wsdl:message>
+  <wsdl:message name="ValidateTinNameAddressListMatchSoapIn">
+    <wsdl:part name="parameters" element="tns:ValidateTinNameAddressListMatch" />
+  </wsdl:message>
+  <wsdl:message name="ValidateTinNameAddressListMatchSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidateTinNameAddressListMatchResponse" />
+  </wsdl:message>
+  <wsdl:message name="BulkTinCheckObjectSoapIn">
+    <wsdl:part name="parameters" element="tns:BulkTinCheckObject" />
+  </wsdl:message>
+  <wsdl:message name="BulkTinCheckObjectSoapOut">
+    <wsdl:part name="parameters" element="tns:BulkTinCheckObjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="BulkTinCheckSoapIn">
+    <wsdl:part name="parameters" element="tns:BulkTinCheck" />
+  </wsdl:message>
+  <wsdl:message name="BulkTinCheckSoapOut">
+    <wsdl:part name="parameters" element="tns:BulkTinCheckResponse" />
+  </wsdl:message>
+  <wsdl:message name="BulkTinCheckStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:BulkTinCheckStatus" />
+  </wsdl:message>
+  <wsdl:message name="BulkTinCheckStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:BulkTinCheckStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="BulkTinCheckResultSoapIn">
+    <wsdl:part name="parameters" element="tns:BulkTinCheckResult" />
+  </wsdl:message>
+  <wsdl:message name="BulkTinCheckResultSoapOut">
+    <wsdl:part name="parameters" element="tns:BulkTinCheckResultResponse" />
+  </wsdl:message>
+  <wsdl:message name="VersionHttpGetIn" />
+  <wsdl:message name="VersionHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="VersionHttpPostIn" />
+  <wsdl:message name="VersionHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="PVSServiceSoap">
+    <wsdl:operation name="Version">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieves current TINCheck version.</wsdl:documentation>
+      <wsdl:input message="tns:VersionSoapIn" />
+      <wsdl:output message="tns:VersionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieves remaining service calls for your account</wsdl:documentation>
+      <wsdl:input message="tns:ServiceStatusSoapIn" />
+      <wsdl:output message="tns:ServiceStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateTinName">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method will verify if TIN/Name combination matches IRS Records.</wsdl:documentation>
+      <wsdl:input message="tns:ValidateTinNameSoapIn" />
+      <wsdl:output message="tns:ValidateTinNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateListMatch">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method will check possible OFAC/SDN and Exluded Persons list(s) match.</wsdl:documentation>
+      <wsdl:input message="tns:ValidateListMatchSoapIn" />
+      <wsdl:output message="tns:ValidateListMatchSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateTinNameAddressListMatch">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method will verify if TIN/Name combination matches IRS Records,  verify if Address matches USPS Records, and check possible Exluded Persons list(s) match.</wsdl:documentation>
+      <wsdl:input message="tns:ValidateTinNameAddressListMatchSoapIn" />
+      <wsdl:output message="tns:ValidateTinNameAddressListMatchSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BulkTinCheckObject">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method will verify if TIN/Name of bulk iles.</wsdl:documentation>
+      <wsdl:input message="tns:BulkTinCheckObjectSoapIn" />
+      <wsdl:output message="tns:BulkTinCheckObjectSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BulkTinCheck">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method will verify if TIN/Name of bulk iles.</wsdl:documentation>
+      <wsdl:input message="tns:BulkTinCheckSoapIn" />
+      <wsdl:output message="tns:BulkTinCheckSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BulkTinCheckStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method will verify if TIN/Name of bulk files.</wsdl:documentation>
+      <wsdl:input message="tns:BulkTinCheckStatusSoapIn" />
+      <wsdl:output message="tns:BulkTinCheckStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BulkTinCheckResult">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method will download a bulk result.</wsdl:documentation>
+      <wsdl:input message="tns:BulkTinCheckResultSoapIn" />
+      <wsdl:output message="tns:BulkTinCheckResultSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="PVSServiceHttpGet">
+    <wsdl:operation name="Version">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieves current TINCheck version.</wsdl:documentation>
+      <wsdl:input message="tns:VersionHttpGetIn" />
+      <wsdl:output message="tns:VersionHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="PVSServiceHttpPost">
+    <wsdl:operation name="Version">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieves current TINCheck version.</wsdl:documentation>
+      <wsdl:input message="tns:VersionHttpPostIn" />
+      <wsdl:output message="tns:VersionHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PVSServiceSoap" type="tns:PVSServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Version">
+      <soap:operation soapAction="http://www.TinCheck.com/WebServices/PVSService/Version" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceStatus">
+      <soap:operation soapAction="http://www.TinCheck.com/WebServices/PVSService/ServiceStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateTinName">
+      <soap:operation soapAction="http://www.TinCheck.com/WebServices/PVSService/ValidateTinName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateListMatch">
+      <soap:operation soapAction="http://www.TinCheck.com/WebServices/PVSService/ValidateListMatch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateTinNameAddressListMatch">
+      <soap:operation soapAction="http://www.TinCheck.com/WebServices/PVSService/ValidateTinNameAddressListMatch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BulkTinCheckObject">
+      <soap:operation soapAction="http://www.TinCheck.com/WebServices/PVSService/BulkTinCheckObject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BulkTinCheck">
+      <soap:operation soapAction="http://www.TinCheck.com/WebServices/PVSService/BulkTinCheck" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BulkTinCheckStatus">
+      <soap:operation soapAction="http://www.TinCheck.com/WebServices/PVSService/BulkTinCheckStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BulkTinCheckResult">
+      <soap:operation soapAction="http://www.TinCheck.com/WebServices/PVSService/BulkTinCheckResult" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PVSServiceSoap12" type="tns:PVSServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Version">
+      <soap12:operation soapAction="http://www.TinCheck.com/WebServices/PVSService/Version" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceStatus">
+      <soap12:operation soapAction="http://www.TinCheck.com/WebServices/PVSService/ServiceStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateTinName">
+      <soap12:operation soapAction="http://www.TinCheck.com/WebServices/PVSService/ValidateTinName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateListMatch">
+      <soap12:operation soapAction="http://www.TinCheck.com/WebServices/PVSService/ValidateListMatch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateTinNameAddressListMatch">
+      <soap12:operation soapAction="http://www.TinCheck.com/WebServices/PVSService/ValidateTinNameAddressListMatch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BulkTinCheckObject">
+      <soap12:operation soapAction="http://www.TinCheck.com/WebServices/PVSService/BulkTinCheckObject" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BulkTinCheck">
+      <soap12:operation soapAction="http://www.TinCheck.com/WebServices/PVSService/BulkTinCheck" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BulkTinCheckStatus">
+      <soap12:operation soapAction="http://www.TinCheck.com/WebServices/PVSService/BulkTinCheckStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BulkTinCheckResult">
+      <soap12:operation soapAction="http://www.TinCheck.com/WebServices/PVSService/BulkTinCheckResult" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PVSServiceHttpGet" type="tns:PVSServiceHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="Version">
+      <http:operation location="/Version" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PVSServiceHttpPost" type="tns:PVSServiceHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="Version">
+      <http:operation location="/Version" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PVSService">
+    <wsdl:port name="PVSServiceSoap" binding="tns:PVSServiceSoap">
+      <soap:address location="https://www.tincheck.com/pvsws/pvsservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="PVSServiceSoap12" binding="tns:PVSServiceSoap12">
+      <soap12:address location="https://www.tincheck.com/pvsws/pvsservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="PVSServiceHttpGet" binding="tns:PVSServiceHttpGet">
+      <http:address location="https://www.tincheck.com/pvsws/pvsservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="PVSServiceHttpPost" binding="tns:PVSServiceHttpPost">
+      <http:address location="https://www.tincheck.com/pvsws/pvsservice.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

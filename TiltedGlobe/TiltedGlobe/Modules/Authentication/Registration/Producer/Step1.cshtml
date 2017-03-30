@@ -1,0 +1,71 @@
+﻿<div>
+    <div class="flex-container">
+        <div class="form-column-registration-spacing">
+            <label class="form-label-question align-right">FIRST NAME</label>
+            <input type="text" class="form-control" ng-model="user.firstName" id="firstName" name="firstName" required />
+            <div><span class="help-block">&nbsp;</span><span ng-show="form.producerRegistration.firstName.$invalid && (form.producerRegistration.firstName.$dirty || form.producerRegistration.firstName.$touched || form.producerRegistration.$submitted)" class="help-block">First name is required</span></div>
+        </div>
+        <div class="form-column-registration-spacing">
+            <label class="form-label-question align-right">LAST NAME</label>
+            <input type="text" class="form-control" ng-model="user.lastName" id="lastName" name="lastName" required />
+            <span ng-show="form.producerRegistration.lastName.$invalid && (form.producerRegistration.lastName.$dirty || form.producerRegistration.lastName.$touched || form.producerRegistration.$submitted)" class="help-block">Last name is required</span>
+        </div>
+        <div class="form-column-registration-spacing">
+            <label class="form-label-question align-right">EMAIL ADDRESS</label>
+            <input type="email" class="form-control" ng-model="user.email" id="emailAddress" name="emailAddress" email-available-validator ng-model-options="{ debounce : { 'default' : 500, blur : 0 } }" required />
+            <span ng-show="!form.producerRegistration.emailAddress.$error.emailAddress && form.producerRegistration.emailAddress.$invalid && (form.producerRegistration.emailAddress.$dirty || form.producerRegistration.emailAddress.$touched || form.producerRegistration.$submitted)" class="help-block">A valid email address is required</span>
+            <span ng-show="form.producerRegistration.emailAddress.$error.emailAddress" class="help-block">That email address has already been registered!</span>
+        </div>
+    </div>
+    <div class="flex-container">
+        <div class="form-column-registration-spacing fWide">
+            <label class="form-label-question align-right">COMPANY NAME</label>
+            <input type="text" class="form-control" ng-model="user.companyName" id="companyName" name="companyName" required />
+            <span class="help-block">&nbsp;</span><span ng-show="form.producerRegistration.companyName.$invalid && (form.producerRegistration.companyName.$dirty || form.producerRegistration.companyName.$touched || form.producerRegistration.$submitted)" class="help-block">Company name is required</span>
+        </div>
+        <div class="form-column-registration-spacing">
+            <label class="form-label-question align-right">YOUR POSITION</label>
+            <input type="text" class="form-control" ng-model="user.yourPosition" id="yourPosition" name="yourPosition" required />
+            <p ng-show="form.producerRegistration.yourPosition.$invalid && (form.producerRegistration.yourPosition.$dirty || form.producerRegistration.yourPosition.$touched || form.producerRegistration.$submitted)" class="help-block">Position is required</p>
+        </div>
+    </div>
+    <div class="flex-container">
+        <div class="form-column-registration-spacing fWide">
+            <label class="form-label-question align-right">COMPANY ADDRESS</label>
+            <input type="text" class="form-control" ng-model="user.companyAddress" id="companyAddress" name="companyAddress" required />
+            <span class="help-block">&nbsp;</span><span ng-show="form.producerRegistration.companyAddress.$invalid && (form.producerRegistration.companyAddress.$dirty || form.producerRegistration.companyAddress.$touched || form.producerRegistration.$submitted)" class="help-block">Address is required</span>
+        </div>
+        <div class="form-column-registration-spacing">
+            <label class="form-label-question align-right">CITY &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <input type="text" class="form-control" ng-model="user.city" id="city" name="city" required />
+            <p ng-show="form.producerRegistration.city.$invalid && (form.producerRegistration.city.$dirty || form.producerRegistration.city.$touched || form.producerRegistration.$submitted)" class="help-block">City is required</p>
+        </div>
+    </div>
+    <div class="flex-container">
+        <div class="form-column-registration-spacing" id="stateProvSelect">
+            <label class="form-label-question align-right">STATE/PROVINCE/REGION</label>
+            <input type="text" class="form-control" ng-model="user.state" id="stateProv" name="stateProv" />
+            <span class="help-block">&nbsp;</span><span ng-show="user.country==='US' && (!form.producerRegistration.stateProv.$dirty || !user.state)" class="help-block">State/Province/Region is required</span>
+        </div>
+        <div class="form-column-registration-spacing">
+            <label class="form-label-question align-right">COUNTRY</label>
+            <country-select class="form-control" cs-priorities="US, CA, GB" ng-model="user.country" id="country" name="country" required></country-select>
+            <p ng-show="form.producerRegistration.country.$invalid && (form.producerRegistration.country.$dirty || form.producerRegistration.country.$touched || form.producerRegistration.$submitted)" class="help-block">Country is required</p>
+        </div>
+        <div class="form-column-registration-spacing">
+            <label class="form-label-question align-right">ZIP/POSTAL CODE</label>
+            <input class="form-control" type="text" ng-model="user.postalCode" id="postalCode" name="postalCode" required />
+            <p ng-show="form.producerRegistration.postalCode.$invalid && (form.producerRegistration.postalCode.$dirty || form.producerRegistration.postalCode.$touched || form.producerRegistration.$submitted)" class="help-block">Zip/Postal Code is required</p>
+        </div>
+    </div>
+    <div class="flex-container">
+        <div class="form-column-registration-spacing">
+            <label class="form-label-question align-right">COMPANY PHONE</label>
+            <input class="form-control" type="text" ng-model="user.companyPhone" id="phoneNumber" name="phoneNumber" required />
+            <p ng-show="form.producerRegistration.phoneNumber.$invalid && (form.producerRegistration.phoneNumber.$dirty || form.producerRegistration.phoneNumber.$touched || form.producerRegistration.$submitted)" class="help-block">Company phone is required</p>
+        </div>
+        <div class="form-column-registration-spacing">
+            <recaptcha form="form.producerRegistration" validator="captchaValidator"></recaptcha>
+        </div>
+    </div>
+</div>

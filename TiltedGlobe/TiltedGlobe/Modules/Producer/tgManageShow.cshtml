@@ -1,0 +1,578 @@
+﻿
+<div>
+    <style>
+        .modal-sm {
+            width: 700px;
+        }
+        .modal-lg {
+            width: 300px;
+        }
+        .modal-content {
+            background-color: transparent;
+        }
+        .modal {
+            right: 400px;
+        }
+    </style>
+    <tg-inline-modal frame="frame">
+        <form name="showForm" ng-controller="wizardFormController" novalidate>
+            <div class="inline-modal-header">
+                <div class="fItem fItemFull">
+                    <span ng-class="page.header.fontAwesomeClass"></span> <span class="largeLabel inline-modal-header-font">{{page.header.name}}</span>
+                </div>
+            </div>
+            <tg-inline-modal-content>
+                <div ng-if="page.id === 'editShowListing'" class="stretch">
+                    <div class="flexAcross">
+                        <div class="flex-item-stretch">
+                            <span class="smallLabel">
+                                Changes made to the show will need to be approved by Tilted Globe. Once the changes are approved,  your show
+                                listing will be updated.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="page.id === 'editShowData' || page.id === 'createNewShow'" class=" stretch">
+                    <div class="flexAcross" style="padding-bottom: 0">
+                        <div class="flex-item-stretch">
+                            <div class="form-group" style="width:245px">
+                                <label>SHOW NAME</label>
+                                <input type="text" class="form-control" ng-model="newShow.name" name="name" required maxlength="30" />
+                                <div class="validation-container"><span ng-show="showForm.name.$invalid && (showForm.name.$dirty || showForm.name.$touched || showForm.$submitted)" class="help-block">Show name is required</span></div>
+                            </div>
+                        </div>
+                        <div class="flex-item">
+                            <div class="form-group" style="width:100px">
+                                <label>TYPE</label>
+                                <select class="form-control" ng-model="newShow.showType" name="showTypeId" ng-options="showType as showType.name for showType in showTypes" required>
+                                    <option value="">Select One</option>
+                                </select>
+                                <div class="validation-container"><span ng-show="showForm.showTypeId.$invalid && (showForm.showTypeId.$dirty || showForm.showTypeId.$touched || showForm.$submitted)" class="help-block">Type is required</span></div>
+                            </div>
+                        </div>
+                        <div class="flex-item" style="width:200px">
+                            <div ng-if="newShow.showType !== null" class="form-group">
+                                <label>GENRE</label>
+                                <select class="form-control" ng-model="newShow.genre" name="genre" ng-options="genre as genre.name for genre in genres | filter: { showTypeId: newShow.showType.id }" required>
+                                    <option value="">Select One</option>
+                                </select>
+                                <div class="validation-container"><span ng-show="showForm.genre.$invalid && (showForm.genre.$dirty || showForm.genre.$touched || showForm.$submitted)" class="help-block">Genre is required</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flexAcross">
+                        <div class="fItem">
+                            <div class="form-group">
+                                <label>ENTER A DESCRIPTION</label>
+                                <textarea rows="5" class="form-control show-description" ng-model="newShow.description" required name="description" maxlength="275"></textarea><br />
+                                Using {{newShow.description.length}} of 275 possible characters.
+                                <div class="validation-container"><span ng-show="showForm.description.$invalid && (showForm.description.$dirty || showForm.description.$touched || showForm.$submitted)" class="help-block">Description is required</span></div>
+                            </div>
+                        </div>
+                        <div class="fItem">
+                            <div class="form-group">
+                                <label>SHOW RATING</label>
+                                <select class="form-control" ng-model="newShow.rating" name="rating" ng-options="item.id as item.val for item in ratings" required>
+                                    <option value="">Select One</option>
+
+                                </select>
+                                <div class="validation-container"><span ng-show="showForm.rating.$invalid && (showForm.rating.$dirty || showForm.rating.$touched || showForm.$submitted)" class="help-block">Rating is required</span></div>
+                            </div>
+                            <div ng-class="{ 'hide': page.id === 'editShowData', 'form-group': page.id === 'createNewShow' }">
+                                <label>ESTIMATED DURATION(min)</label>
+                                <input only-numeric class="form-control" ng-model="newShow.estimatedDuration" name="estimatedDuration" required />
+                                <div class="validation-container"><span ng-show="showForm.estimatedDuration.$invalid && (showForm.estimatedDuration.$dirty || showForm.estimatedDuration.$touched || showForm.$submitted)" class="help-block">Duration is required</span></div>
+                            </div>
+                        </div>
+                        <div class="fItem">
+                            <div class="form-group">
+                                <br /><br />
+                                <label class="electrify">View Guidelines</label>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-container">
+                        <div ng-class="{ 'date-playbill-edit': page.id === 'editShowData', 'date-playbill-add': page.id === 'createNewShow' }">
+                            <div>
+                                <div class="flex-container date-picker-row" ng-repeat="showDate in newShow.showDates">
+                                    <div class="fItem">
+                                        <div class="form-group">
+                                            <label ng-if="$index === 0">SHOW DATE/TIME</label>
+                                            <div class="dropdown" style="width:200px; color:black;">
+                                                <a class="dropdown-toggle" id="dropdown{{$index}}" role="button" data-toggle="dropdown" data-target="#" href="#">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control remove-top-margin" ng-model="newShow.showDates[$index]" date-formatter="{{dateFormat}}">
+                                                        <div class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></div>
+                                                    </div>
+                                                </a>
+                                                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                                    <datetimepicker before-render="beforeRender($view, $dates, $leftDate, $upDate, $rightDate)" data-ng-model="newShow.showDates[$index]" data-datetimepicker-config="{ dropdownSelector: '#dropdown{{$index}}', minuteStep:5 }" />
+                                                </ul>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="fItem">
+                                        <div class="form-group">
+                                            <label ng-if="$index === 0">&nbsp;</label>
+                                            <input ng-if="$index !== 5 && $index === newShow.showDates.length-1 && view !== 'editShow'" type="button" class="form-control" style="margin-top:0" value=" + ADD MORE" ng-click="addShowDate()" ng-if="$index === 0" />
+                                        </div>
+                                    </div>
+                                    <div class="fItem">
+                                        <div class="form-group">
+                                            <label ng-if="$index === 0">&nbsp;</label>
+                                            <tg-info-tooltip style="width:100%; margin-top:5px;" ng-if="$index !== 5 && $index === newShow.showDates.length-1 && view !== 'editShow'" content="<p>You may submit multiple instances of the same show at once for approval.</p><p>Once they are approved you manage the streaming information for each.</p>"></tg-info-tooltip>
+                                        </div>
+                                    </div>
+                                    <div class="fItem">
+                                        <div class="form-group">
+                                            <span class="fa fa-times-circle remove-date" ng-if="$index !== 0" ng-click="removeDate($index)"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex-container" ng-class="{ 'playbill-edit': page.id === 'editShowData' }">
+                                <div class="form-group ">
+                                    <label>UPLOAD PLAYBILL</label>
+                                    <input type="text" class="form-control" name="playBill" style="margin-top:0" value="{{newShow.playBill.name}}" readonly />
+                                </div>
+                                <div class="form-group nudge-right">
+                                    <label>&nbsp;</label>
+                                    <file-upload-button binding="newShow.playBillAwsAssetKey" file="newShow.playBill" text="Browse" accept="documents"></file-upload-button><br />
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-if="view === 'editShow'" class="nudge-right">
+                            <div style="background-color: black; border: 2px solid #979298; width: 440px; height: 248px;margin-left: auto;margin-right: auto;" file-upload-view file="newShow.showThumbNail" file-url="{{newShow.thumbNailLink}}">
+                                <div ng-if="!newShow.showThumbNailAwsAssetKey" style="white-space: nowrap; width: 205px; margin-left: auto; margin-right: auto; margin-top: 100px; height:100%">
+                                    <file-upload-button binding="newShow.showThumbNailAwsAssetKey" file="newShow.showThumbNail" text="UPLOAD THUMBNAIL" show-add="t" accept="images"></file-upload-button>
+                                </div>
+                                <div ng-if="newShow.showThumbNailAwsAssetKey" style="margin-left:60%" ng-click="removeThumbNail()"><button type="button" class="removeButton"><span class="fa fa-times-circle"></span>&nbsp;&nbsp;<span class="buttonLabel">Remove</span></button></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="page.id === 'editShowData' || page.id === 'createNewShow2'" class="stretch">
+                    <div class="flexAcross" style="border-bottom-width:1px;border-bottom-style:solid;">
+                        <div class="flex-item-stretch">
+                            Do you want to record the show for On-Demand Conversion later?
+                        </div>
+                        <div style="width:100px">
+                            <tg-info-tooltip content="<p>You must have obtained prior permission from the copyright owner.</p><p>Please upload applicable consent forms below.</p>"></tg-info-tooltip>
+                        </div>
+                        <div class="required-column help-block"><span ng-show="!shouldConvertToOnDemand.$dirty && showForm.$submitted">Required</span></div>
+                        <ng-form name="shouldConvertToOnDemand" novalidate>
+                            <div class="flex-item-content">
+                                <input type="radio" ng-model="newShow.shouldConvertToOnDemand" ng-value="true" id="shouldConvertToOnDemandYes" name="shouldConvertToOnDemandYes" />
+                                <label for="shouldConvertToOnDemandYes">YES</label>
+                            </div>
+                            <div class="flex-item-content">
+                                <input type="radio" ng-model="newShow.shouldConvertToOnDemand" ng-value="false" id="shouldConvertToOnDemandNo" name="shouldConvertToOnDemandNo" />
+                                <label for="shouldConvertToOnDemandNo">NO</label>
+                            </div>
+                        </ng-form>
+                    </div>
+                    <div class="flexAcross" style="border-bottom-width:1px;border-bottom-style:solid;">
+                        <div class="flex-item-stretch" style="flex: 1 0 auto;">
+                            Are you the OWNER or AUTHOR of the copyrighted material?
+                        </div>
+                        <div style="width: 100px">
+                            <tg-info-tooltip content="Will be posted with the show for copyright and recgonition purposes."></tg-info-tooltip>
+                        </div>
+                        <div class="required-column help-block"><span ng-show="!isOwner.$dirty && showForm.$submitted">Required</span></div>
+                        <ng-form name="isOwner" novalidate>
+                            <div class="flex-item-content">
+                                <input type="radio" ng-model="newShow.isOwner" ng-value="true" id="isOwnerYes" name="isOwnerYes" />
+                                <label for="isOwnerYes">YES</label>
+                            </div>
+                            <div class="flex-item-content">
+                                <input type="radio" ng-model="newShow.isOwner" ng-value="false" id="isOwnerNo" name="isOwnerNo" />
+                                <label for="isOwnerNo">NO</label>
+                            </div>
+                        </ng-form>
+                    </div>
+                    <div class="flexAcross" style="border-bottom-width:1px;border-bottom-style:solid;">
+                        <div class="flex-item-stretch" style="flex: 1 0 auto;">
+                            Do you want to enable delayed viewing for this show?
+                        </div>
+                        <div style="width:100px">
+                            <tg-info-tooltip content="Show may be seen in a viewer once within a 24 hour window from air."></tg-info-tooltip>
+                        </div>
+                        <div class="required-column help-block"><span ng-show="!isDelayedViewingEnabled.$dirty && showForm.$submitted">Required</span></div>
+                        <ng-form name="isDelayedViewingEnabled" novalidate>
+                            <div class="flex-item-content">
+                                <input type="radio" ng-model="newShow.isDelayedViewingEnabled" ng-value="true" id="isDelayedViewingEnabledYes" name="isDelayedViewingEnabledYes" />
+                                <label for="isDelayedViewingEnabledYes">YES</label>
+                            </div>
+                            <div class="flex-item-content">
+                                <input type="radio" ng-model="newShow.isDelayedViewingEnabled" ng-value="false" id="isDelayedViewingEnabledNo" name="isDelayedViewingEnabledNo" />
+                                <label for="isDelayedViewingEnabledNo">NO</label>
+                            </div>
+                        </ng-form>
+                    </div>
+                    <div class="flexAcross" ng-if="view !== 'editShow'">
+                        <div class="flex-item-stretch" style="flex: 1 0 auto;">
+                            Do you want to allow Commercial Viewers to stream you show in their space?
+                        </div>
+                        <div class="required-column help-block"><span ng-show="!allowCommercialViewersToStream.$dirty && showForm.$submitted">Required</span></div>
+                        <ng-form name="allowCommercialViewersToStream" novalidate>
+                            <div class="flex-item-content">
+                                <input type="radio" ng-model="newShow.allowCommercialViewersToStream" ng-value="true" id="allowCommercialViewersToStreamYes" name="allowCommercialViewersToStreamYes" required />
+                                <label for="allowCommercialViewersToStreamYes">YES</label>
+                            </div>
+                            <div class="flex-item-content">
+                                <input type="radio" ng-model="newShow.allowCommercialViewersToStream" ng-value="false" id="allowCommercialViewersToStreamNo" name="allowCommercialViewersToStreamNo" required />
+                                <label for="allowCommercialViewersToStreamNo">NO</label>
+                            </div>
+                        </ng-form>
+                    </div>
+                    <div class="flexAcross" ng-if="view !== 'editShow'">
+                        <div class="flex-item-stretch">
+                            <span class="smallLabel">PLEASE READ AND SIGN THE CONTRACT</span>
+                        </div>
+                    </div>
+                    <div class="flexAcross" ng-if="view !== 'editShow'">
+                        <div class="flex-item-stretch" style="flex: 1 0 auto;">
+                            <div class="form-group">
+                                <textarea readonly="readonly" class="form-control" rows="20" id="singleViewerContract"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flexAcross" ng-if="view !== 'editShow'">
+                        <div>
+                            <div class="form-group">
+                                <input type="checkbox" ng-model="newShow.iAgree" id="iAgree" name="iAgree" required />
+                                <label for="iAgree">I AGREE</label>
+                                <span class="help-block" ng-show="!showForm.iAgree.$dirty && showForm.$submitted">Required</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="page.id === 'uploadForms'" class="stretch">
+                    <div class="flexAcross">
+                        <div class="flex-item-stretch">
+                            <span class="smallLabel">Please upload the following documents. Failure to upload may result in the Rejection of your Show.</span>
+                        </div>
+                    </div>
+                    <div class="flexAcross" style="width:50%">
+                        <div class="flex-item">
+                            <div class="form-group">
+                                <label class="ucase">Upload Venue Contract</label>
+                                <input type="text" class="form-control" name="theaterContract" style="margin-top:0" value="{{newShow.theaterContract.name}}" readonly />
+                            </div>
+                        </div>
+                        <div class="flex-item">
+                            <div class="form-group">
+                                <label class="ucase">&nbsp</label>
+                                <file-upload-button binding="newShow.theaterContractAwsAssetKey" file="newShow.theaterContract" text="Add File" show-add="t" accept="documents"></file-upload-button><br />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flexAcross" style="width:50%" ng-if="!newShow.isOwner">
+                        <div class="flex-item">
+                            <div class="form-group">
+                                <label class="ucase">Upload Royalty Agreements</label>
+                                <input type="text" class="form-control" name="royaltyAgreements" style="margin-top:0" value="{{newShow.royaltyAgreements.name}}" readonly />
+
+                            </div>
+                        </div>
+                        <div class="flex-item">
+                            <div class="form-group">
+                                <label class="ucase">&nbsp</label>
+                                <file-upload-button binding="newShow.royaltyAgreementsAwsAssetKey" file="newShow.royaltyAgreements" text="Add File" show-add="t" accept="documents"></file-upload-button><br />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="page.id==='pricing'" class="stretch">
+                    <div style="height:260px;">
+                        <div style="background-color: black; border: 2px solid #979298; width: 440px; height: 248px;margin-left: auto;margin-right: auto;" file-upload-view file="newShow.showThumbNail">
+                            <div ng-if="!newShow.showThumbNail" style="white-space: nowrap; width: 205px; margin-left: auto; margin-right: auto; margin-top: 100px; height:100%">
+                                <file-upload-button binding="newShow.showThumbNailAwsAssetKey" file="newShow.showThumbNail" text="UPLOAD THUMBNAIL" show-add="t" accept="images"></file-upload-button>
+                            </div>
+                            <div ng-if="newShow.showThumbNail" style="margin-left:70%" ng-click="removeThumbNail()"><button type="button" class="removeButton"><span class="fa fa-times-circle"></span>&nbsp;&nbsp;<span class="buttonLabel">Remove</span></button></div>
+                        </div>
+                        <div ng-if="!newShow.showThumbNail && showForm.$submitted" style="margin-right:auto;margin-left: auto;width:440px;display:block;" class="help-block">*Thumbnail is Required</div>
+                    </div>
+                    <div class="flexAcross no-spacing group-header-cols" style="line-height: 1.3;font-size: 12px; ">
+                        <div style="flex: 1 0 auto;">
+
+                        </div>
+                        <div style="margin-right:15px;">
+                            <span class="group-header-label">RESERVATION<br />FEE</span> <tg-info-tooltip content="<b>Reservation Fee</b> is determined by multiplying the duration of the show by our bandwidth costs."></tg-info-tooltip>
+                        </div>
+                        <div style="margin-right: 35px;">
+                            <span class="fa fa-ticket" style="margin-right:5px;"></span><span style="font-weight: 700; margin-right: 5px;">VIEWER TICKETS</span><tg-info-tooltip content="<p>You will we charged by # of Viewer Tickets issued times, the Base Ticket Price.</p><p>Increase the amount your want to charge above base in order to earn revenue.</p>"></tg-info-tooltip>
+                        </div>
+                        <div style="margin-right:23px;">
+                            <span>HANDLING<br />FEE</span>
+                        </div>
+                        <div style="margin-right: 55px">
+                            <span>RETAIL<br />PRICE</span>
+                        </div>
+                        <div style="margin-right: 20px;" ng-if="newShow.allowCommercialViewersToStream">
+                            <span class="fa fa-ticket" style="margin-right:5px;"></span><span class="group-header-label" style="font-weight: 700; margin-right:5px;">COMMERCIAL TICKETS</span><tg-info-tooltip content="<p>You will be charged by # of Commercial Tickets issued, times the Base Ticket Price.</p><p>Increase the amount your want to charge above base in order to earn revenue.</p>"></tg-info-tooltip>
+                        </div>
+                        <div style="margin-right: 22px;" ng-if="newShow.allowCommercialViewersToStream">
+                            <span>HANDLING<br />FEE</span>
+                        </div>
+                        <div style="margin-right: 10px;" ng-if="newShow.allowCommercialViewersToStream">
+                            <span>RETAIL<br />PRICE</span>
+                        </div>
+                    </div>
+                    <div class="flexAcross no-spacing row-header-cols" >
+                        <div style="flex: 1 0 auto;">
+                            {{newShow.name}}
+                        </div>
+                        <div style="margin-right: 51px;">
+                            #ISSUED
+                        </div>
+                        <div style="margin-right:210px;">
+                            BASE PRICE
+                        </div>
+                        <div style="margin-right: 51px;" ng-if="newShow.allowCommercialViewersToStream">
+                            #ISSUED
+                        </div>
+                        <div style="margin-right: 163px; " ng-if="newShow.allowCommercialViewersToStream">
+                            BASE PRICE
+                        </div>
+                    </div>
+                    <div class="flexAcross" ng-repeat="showDate in newShow.showDates" style="padding-top:0;">
+                        <div style="flex: 1 0 auto;">
+                            <span class="electrify">{{showDate | date : ngDateFormat}}</span>
+                        </div>
+                        <div class="base-price" style="width:80px;">
+                            {{newShow.reservationFee | currency}}
+                        </div>
+                        <div style="margin-right:2px; width:90px;">
+                            <input only-numeric type="text" class="form-control new-show-tickets-and-prices-control" ng-model="newShow.ticketing.singleViewer[$index].issued" name="singleViewerIssued{{$index}}" required ng-change="productionChargeChange()" />
+                            <span ng-if="(isDirty('singleViewerPricing', $index) && !newShow.ticketing.singleViewer[$index].issued) || (showForm.$submitted && !newShow.ticketing.singleViewer[$index].issued)" class="help-block">*</span>
+                        </div>
+                        <div style="margin-right: 2px; width: 90px;">
+                            <input only-numeric allow-decimal type="text" class="form-control new-show-tickets-and-prices-control" ng-model="newShow.ticketing.singleViewer[$index].basePrice" name="singleViewerPricing{{$index}}" required ng-change="productionChargeChange()" />
+                            <span ng-if="(isDirty('singleViewerIssued', $index) && !newShow.ticketing.singleViewer[$index].basePrice) || (showForm.$submitted && !newShow.ticketing.singleViewer[$index].basePrice)" class="help-block">*</span>
+                        </div>
+                        <div class="base-price" style="width:83px;">
+                            {{newShow.ticketing.singleViewer[$index].handlingFee | currency}}
+                        </div>
+                        <div class="base-price" style="width: 92px">
+                            {{newShow.ticketing.singleViewer[$index].retailPrice | currency}}
+                        </div>
+                        <div style="margin-right: 2px; width: 90px;" ng-if="newShow.allowCommercialViewersToStream">
+                            <input only-numeric type="text" class="form-control new-show-tickets-and-prices-control" ng-model="newShow.ticketing.commercialViewer[$index].issued" name="commercialViewerIssued{{$index}}" required ng-change="productionChargeChange()" />
+                            <span ng-if="(isDirty('commercialViewerPricing', $index) && !newShow.ticketing.commercialViewer[$index].issued) || (showForm.$submitted && !newShow.ticketing.commercialViewer[$index].issued)" class="help-block">*</span>
+                        </div>
+                        <div style="margin-right: 2px; width: 90px;" ng-if="newShow.allowCommercialViewersToStream">
+                            <input only-numeric allow-decimal type="text" class="form-control new-show-tickets-and-prices-control" ng-model="newShow.ticketing.commercialViewer[$index].basePrice" name="commercialViewerPricing{{$index}}" required ng-change="productionChargeChange()" />
+                            <span ng-if="(isDirty('commercialViewerIssued', $index) && !newShow.ticketing.commercialViewer[$index].basePrice) || (showForm.$submitted && !newShow.ticketing.commercialViewer[$index].basePrice)" class="help-block">*</span>
+                        </div>
+                        <div class="base-price" style="width: 83px;" ng-if="newShow.allowCommercialViewersToStream">
+                            {{newShow.ticketing.commercialViewer[$index].handlingFee | currency}}
+                        </div>
+                        <div class="base-price" style="width:47px;" ng-if="newShow.allowCommercialViewersToStream">
+                            {{newShow.ticketing.commercialViewer[$index].retailPrice| currency}}
+                        </div>
+                    </div>
+                    <div class="flexAcross no-spacing">
+                        <div class="flex-item-stretch">
+
+                        </div>
+                        <div class="help-block" style="width:90px"
+                             ng-if="(areFieldsDirtyAndInvalid() && showForm.$invalid) ||
+                                    (showForm.$submitted && (!newShow.commercialRetailPrice[$index] || newShow.commercialIssued[$index] || !newShow.viewerRetailPrice[$index] || !newShow.viewerIssued[$index]))">
+                            * Required
+                        </div>
+                    </div>
+                    <div class="flexAcross no-spacing production-summary">
+                        <div style="flex: 1 0 auto;" class="production-charge">
+                            <tg-info-tooltip content="<b>TOTAL PRODUCTION CHARGE</b><br />is calculated by multiplying the base ticket price in the amount of tickets issued plus a $1.00 handling charge per ticket issued"></tg-info-tooltip>
+                            <span>TOTAL PRODUCTION CHARGE = {{newShow.totalProductionCost | currency}}</span>
+                        </div>
+                        <div class="production-profit">
+                            <div>
+                                <div class="production-profit-grid gross-potential-earnings">GROSS POTENTIAL<br />EARNINGS:</div>
+                                <div class="production-profit-grid">
+                                    <span>{{newShow.grossPotentialEarnings | currency}}</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="production-profit-grid net-worth">
+                                    POTENTIAL<br />NET PROFIT:
+                                </div>
+                                <div class="production-profit-grid">
+                                    <span class="electrify">{{newShow.potentialNetProfit | currency}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="page.id==='pricingOptional'" class="stretch">
+                    <div class="flexAcross">
+                        <div class="flex-item-stretch">
+                            <span class="smallLabel">
+                                We noticed a difference in retiail price in the following shows.
+                                You may add a short note to these listings to explain to the
+                                viewers why these tickets cost more. For example, if there is a
+                                special guest or event.
+                            </span>
+                        </div>
+                    </div>
+                    <div class="flexAcross no-spacing row-header-cols">
+                        <div style="flex: 1 0 auto;">
+
+                        </div>
+                        <div class="new-show-diff-container">
+                            RETAIL PRICE
+                        </div>
+                        <div class="new-show-diff-container" ng-if="newShow.allowCommercialViewersToStream">
+                            COMMERCIAL PRICE
+                        </div>
+                        <div class="new-show-diff-container">
+                            NOTE (will be added to show title)
+                        </div>
+                    </div>
+                    <div class="flexAcross no-spacing row-header-cols">
+                        <div>
+                            {{newShow.name}}
+                        </div>
+                    </div>
+                    <div class="flexAcross no-spacing" ng-repeat="showDate in newShow.showDates">
+                        <div style="flex: 1 0 auto;" class="electrify">
+                            {{showDate | date : ngDateFormat}}
+                        </div>
+                        <div class="new-show-diff-container">
+                            {{newShow.ticketing.singleViewer[$index].basePrice | currency}}
+                        </div>
+                        <div class="new-show-diff-container" ng-if="newShow.allowCommercialViewersToStream">
+                            {{newShow.ticketing.commercialViewer[$index].basePrice | currency}}
+                        </div>
+                        <div class="new-show-diff-container" style="margin-bottom:10px;">
+                            <select class="form-control new-show-diff-control" style="margin-top:0;" ng-model="newShow.note[$index]">
+                                <option value="">-----</option>
+                                <option value="guest">W/ Special Guest</option>
+                                <option value="special">Special Performance</option>
+                                <option value="last">Last Show</option>
+                                <option value="rehersal">Rehersal Show</option>
+                                <option value="preview">Preview Performance</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="page.id==='confirm'" class="stretch">
+                    <div class="flexAcross">
+                        <div class="flex-item-stretch">
+                            <span class="smallLabel">
+                                Click "Pay with Paypal" to confirm your purchase of cyber-seats.  Once your payment is processed, you may set up
+                                the streaming information for the show(s).  Once this is done, and it is approved by TILTED GLOBE, your tickets will
+                                be issued and made public for sale.
+                                <br /><br />
+                                Click "Previous" to edit your info.
+                            </span>
+                        </div>
+                    </div>
+                    <div class="flexAcross no-spacing row-header-cols">
+                        <div style="flex: 1 0 auto;">
+
+                        </div>
+                        <div class="new-show-confirm-container">
+                            RETAIL PRICE
+                        </div>
+                        <div class="new-show-confirm-container" ng-if="newShow.allowCommercialViewersToStream">
+                            COMMERCIAL PRICE
+                        </div>
+                        <div class="new-show-confirm-container">
+                            <span class="fa fa-ticket"></span> TICKETS ISSUED
+                        </div>
+                        <div class="new-show-confirm-container">
+                            PRODUCTION COST
+                        </div>
+                    </div>
+                    <div class="flexAcross no-spacing row-header-cols grid-horizontal">
+                        <div>
+                            {{newShow.name}}
+                        </div>
+                    </div>
+                    <div class="flexAcross no-spacing grid-horizontal" ng-repeat="showDate in newShow.showDates">
+                        <div style="flex: 1 0 auto;" class="electrify">
+                            {{showDate | date : ngDateFormat}}
+                        </div>
+                        <div class="new-show-confirm-container">
+                            {{newShow.ticketing.singleViewer[$index].retailPrice | currency}}
+                        </div>
+                        <div class="new-show-confirm-container" ng-if="newShow.allowCommercialViewersToStream">
+                            {{newShow.ticketing.commercialViewer[$index].retailPrice | currency}}
+                        </div>
+                        <div class="new-show-confirm-container">
+                            {{totalTicketsIssued(newShow.ticketing, $index)}}
+                        </div>
+                        <div class="new-show-confirm-container" style="margin-bottom:10px;">
+                            {{newShow.ticketing.commercialViewer[$index].productionCost + newShow.ticketing.singleViewer[$index].productionCost| currency}}
+                        </div>
+                    </div>
+                    <div class="flexAcross no-spacing" style="font-size: 15px;font-weight: 700;">
+                        <div style="flex: 1 0 auto;" class="total-label">
+                            TOTAL CHARGE:
+                        </div>
+                        <div class="new-show-confirm-container">
+                            {{newShow.totalProductionCost | currency}}
+                        </div>
+                    </div>
+
+                </div>
+                <div ng-if="page.id === 'applytoall'" class="stretch">
+                    <div class="flexAcross">
+                        <div class="flex-item-stretch">
+                            <span class="smallLabel">
+                                You have multiple recurrences of this show.   If you would like to apply changes to the other recurrences, select
+                                them below.
+                            </span>
+                        </div>
+                    </div>
+                    <div>
+                        <div>APPLY CHANGES TO</div>
+                        <div ng-repeat="show in relatedShows">
+                            <input type="checkbox" ng-model="show.batchModify" id="check_{{show.id}}" name="check_{{show.id}}" />
+                            <label class="electrify" for="check_{{show.id}}">{{show.showDate | date : ngDateFormat}}</label>
+                            <br ng-if="show.note" />
+                            <span ng-if="show.note" class="show-listing-grayish">{{show.note}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="page.id === 'simpleText'" class="stretch">
+                    <div class="flexAcross">
+                        <div class="flex-item-stretch">
+                            <span class="smallLabel">
+                                {{page.content}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </tg-inline-modal-content>
+
+            <tg-inline-modal-footer>
+                <div class="fItem">
+                    <button ng-if="page.footer.previous" type="button" class="{{page.footer.previous.buttonClass}}" ng-click="page.footer.previous.onClick()" >
+                        <div>
+                            <span class="{{page.footer.previous.leftIconClass}}"></span>
+                            <span class="buttonLabel nudge-right-small">{{page.footer.previous.text}}</span>
+                            <span class="{{page.footer.previous.rightIconClas}}"></span>
+                        </div>
+                    </button>
+
+                </div>
+                <div class="fItem">
+                    <button ng-if="page.footer.next" type="button" class="{{page.footer.next.buttonClass}}" ng-click="page.footer.next.onClick()">
+                        <div>
+                            <span class="{{page.footer.next.leftIconClass}}"></span>
+                            <span class="buttonLabel nudge-right-small">{{page.footer.next.text}}</span>
+                            <span class="{{page.footer.next.rightIconClas}}"></span>
+                        </div>
+                    </button>
+                </div>
+            </tg-inline-modal-footer>
+        </form>
+    </tg-inline-modal>
+</div>

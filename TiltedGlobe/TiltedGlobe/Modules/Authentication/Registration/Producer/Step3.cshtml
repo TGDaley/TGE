@@ -1,0 +1,36 @@
+﻿<div >
+
+        
+                
+
+                
+
+                <div ng-if="step === 3">
+                    <div class="flexAcross">
+                        <div class="fItem fHalf">
+                            <div class="form-group">
+                                <label>COMPANY EIN NUMBER</label>
+                                <input type="text" class="form-control" ng-model="ProducerRegistrationForm1.einNumber" id="einNumber" name="einNumber" required />
+                                <p ng-show="producerRegistrationForm1.einNumber.$invalid && (producerRegistrationForm1.$dirty || producerRegistrationForm1.$touched || producerRegistrationForm1.$submitted)" class="help-block">Please enter your company's EIN Number</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flexAcross">
+                        <div class="fItem fItemFull">
+                            <p>
+                                In order to recieve payments from viewers on the site, you will need to link a PAYPAL ACCOUNT. On linking, there will be a $10 Registration fee.
+                            </p>
+                            <p>
+                                Please click below to Login, or create a PAYPAL ACCOUNT to finish registration.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flexAcross">
+                        <div class="fItem fHalf">&nbsp;</div>
+                        <div class="fItem">
+                            <span class="largeLabel">REGISTRATION FEE: $10.00</span>
+                        </div>
+                    </div>
+                </div>
+        
+</div>

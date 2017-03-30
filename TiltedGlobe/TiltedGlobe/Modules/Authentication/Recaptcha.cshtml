@@ -1,0 +1,20 @@
+﻿<div class="tgCaptcha">
+    <div  re-captcha ng-model="captcha" id="recaptcha_widget">
+        <div>
+            <div id="recaptcha_image"></div>
+            <br />
+        </div>
+        <div class="flex-container">
+            <div class="fItem">
+                <label class="form-label-question align-right">Type the words shown above</label>
+                <input type="text" class="form-control" ng-model="captchaResponse" id="recaptcha_response_field" name="recaptcha_response_field" required />
+                <p ng-show="captchaError || (form.recaptcha_response_field.$invalid && (form.recaptcha_response_field.$dirty || form.recaptcha_response_field.$touched || form.$submitted))" class="help-block">Please prove you are human!</p>
+            </div>
+
+            <div class="fItem">
+                <label class="form-label-question align-right">&nbsp;</label>
+                <button type="button" class="whiteButton" ng-click="reloadCaptcha()"><span class="smallButtonLabel">Reload</span></button>
+            </div>
+        </div>
+    </div>
+</div>

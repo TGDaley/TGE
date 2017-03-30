@@ -1,0 +1,44 @@
+﻿<div>
+    <script>
+        $(document).ready(function () {
+            $('#producerContract').load('/content/text/producer_contract.txt');
+        });
+    </script>
+    <div class="flex-container form-row-registration-spacing flex-space-content">
+        <div class="nudge-down-large">
+            <span class="label-header">PLEASE READ AND SIGN THE PRODUCER CONTRACT</span>
+        </div>
+        <div>
+            <tg-button button-class="light-gray-button" left-icon-class="fa fa-file-pdf-o" text="Download" text-label-class="buttonLabel"></tg-button>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="form-group">
+                <textarea readonly="readonly" class="form-control" rows=20 id="producerContract"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="flexAcross fEnd">
+        <div class="form-column-registration-spacing form-registration-contract-agree">
+            <div class="form-group nudge-down-xlarge">
+                <input type="checkbox" ng-model="user.iAgree" id="iAgree" name="iAgree" required />
+                <label class="clear" for="iAgree">I AGREE</label>
+                <p ng-show="form.viewerRegistration.iAgree.$invalid && (form.viewerRegistration.iAgree.$dirty || form.viewerRegistration.iAgree.$touched  || form.viewerRegistration.$submitted)" class="help-block">You must agree to the producer contract to continue registration</p>
+            </div>
+        </div>
+        <div class="form-column-registration-spacing form-registration-signature">
+            <div class="form-group">
+                <label>E-SIGNATURE</label>
+                <input type="text" class="form-control" ng-model="user.eSignature" id="eSignature" name="eSignature" required />
+                <p ng-show="(form.viewerRegistration.eSignature.$error.required)
+                                            && (form.viewerRegistration.eSignature.$dirty
+                                               || form.viewerRegistration.eSignature.$touched
+                                               || form.viewerRegistration.$submitted)" class="help-block">You must type your name to electronically sign the contract</p>
+                <p ng-show="form.viewerRegistration.eSignature.$error.signatureDoesntMatch"
+                   class="help-block">The signature must match the first and last name on the previous step</p>
+
+            </div>
+        </div>
+    </div>
+</div>

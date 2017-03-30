@@ -1,0 +1,82 @@
+﻿button {
+    padding: 8px 20px;
+    border-radius: 6pt;
+    border: 0;
+    font-weight: 700;
+    white-space:nowrap;
+}
+.button-blue {
+    background-color: #1b84f9;
+}
+
+.button-dark-blue {
+    background-color: #1D6CC4;
+}
+
+.button-gray {
+    background-color: #7e7c7d;
+}
+
+.button-lavender {
+    background-color: #867BF9;
+    font-size: 14px;
+}
+
+.buttonLabel {
+    font-size: 14px;
+    display: inline;
+    vertical-align: middle;
+    text-transform: uppercase;
+}
+
+.buttonLabel {
+    font-size: 12px;
+    display: inline;
+    vertical-align: middle;
+    text-transform: uppercase;
+}
+
+.smallButtonLabel {
+    font-size: 11px;
+    display: inline;
+    vertical-align: middle;
+    font-weight: 400;
+}
+
+button[type="button"].whiteButton {
+    margin-top: 3px;
+    padding: 0 5px;
+    border-radius: 4pt;
+    color: #515151;
+    background-color: #fff;
+    border: 0px;
+    font-weight: 400;
+    width: 100%;
+    font-size: 16px;
+}
+
+
+
+.light-gray-button {
+    margin-top: 10px;
+    color: #33282E;
+    background-color: #CDCCCC;
+    font-weight: 700;
+    width: 100%;
+    /*font-size: 24px;*/
+}
+button[type="button"].removeButton {
+    margin-top: 10px;
+    color: #ffffff;
+    background-color: #000;
+    font-weight: 700;
+    width: 100%;
+    /*font-size: 24px;*/
+}
+
+
+.choose-button {
+    background-color: #868686;
+    border-radius:5px;
+    padding: 5px;
+}

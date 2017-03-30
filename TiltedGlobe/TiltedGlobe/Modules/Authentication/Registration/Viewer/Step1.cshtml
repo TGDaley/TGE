@@ -1,0 +1,36 @@
+﻿<div class="flex-container">
+    <ng-form name="viewerType" novalidate>
+        <div class="flex-container single-commercial-viewer-options">
+            <div class="flex-item-stretch">
+                <input type="radio" ng-model="user.type" id="viewerType" name="viewerType" value="normal" ng-change="setLastStep()" required />
+                <label for="viewerType">SINGLE VIEWER</label>
+            </div>
+            <div class="flex-item-stretch">
+                <span>OR</span>
+            </div>
+            <div class="flex-item-stretch">
+                <input type="radio" ng-model="user.type" id="viewerType2" name="viewerType" value="commercial" ng-change="setLastStep()" required />
+                <label for="viewerType2">COMMERCIAL VENUE</label>
+            </div>
+            <div class="flex-item-stretch">
+                <tg-info-tooltip content="Commercial Account should be selected if you plan to broadcast the stream in a pubiic location to multiple viewers.">
+                </tg-info-tooltip>
+            </div>
+        </div>
+    </ng-form>
+    <div class="flex-item-stretch">
+        <div class="required-column help-block"><span ng-show="!viewerType.$dirty && form.viewerRegistration.$submitted">Required</span></div>
+    </div>
+</div>
+
+    <div class="flex-container">
+        <div class="form-column-registration-spacing">
+            <label class="form-label-question align-right">EMAIL ADDRESS</label>
+            <input type="email" class="form-control" ng-model="user.email" id="emailAddress" name="emailAddress" email-available-validator ng-model-options="{ debounce : { 'default' : 500, blur : 0 } }" required />
+            <span ng-show="!form.viewerRegistration.emailAddress.$error.emailAddress && form.viewerRegistration.emailAddress.$invalid && (form.viewerRegistration.emailAddress.$dirty || form.viewerRegistration.emailAddress.$touched || form.viewerRegistration.$submitted)" class="help-block">A valid email address is required</span>
+            <span ng-show="form.viewerRegistration.emailAddress.$error.emailAddress" class="help-block">That email address has already been registered!</span>
+        </div>
+        <div class="flex-item-stretch form-column-registration-spacing">
+            <recaptcha form="form.viewerRegistration" validator="captchaValidator"></recaptcha>
+        </div>
+    </div>

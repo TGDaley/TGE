@@ -1,0 +1,222 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html ng-app="Producer" ng-controller="ProducerCtrl">
+    <head>
+        <link href='http://fonts.googleapis.com/css?family=Oxygen|Oxygen:700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/bower_components/fontawesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="/bower_components/angular-bootstrap-datetimepicker/src/css/datetimepicker.css" />
+        <link rel="stylesheet" href="/bower_components/ladda/dist/ladda-themeless.min.css" />
+        <link rel="stylesheet" href="/Content/common.css"/>
+        <link rel="stylesheet" href="/Content/form.css" />
+        <link rel="stylesheet" href="/Content/inline-modal.css" />
+        <link href="/Content/Producer.css" rel="stylesheet" />
+        <link rel="stylesheet" href="/Content/button.css" />
+        <link rel="stylesheet" href="/Content/flexBox.css" />
+        <link rel="stylesheet" href="/Content/wizard.css" />
+        <link rel="stylesheet" href="/Content/fileUpload.css" />
+        <link href="/amp/resources/styles/styles.css" rel="stylesheet" />
+        <title>Producer</title>
+    </head>
+    <body>
+        <div ng-if="page === 'addShow' && isWizard">
+            <div class="header-main">
+
+            </div>
+            <tg-manage-show></tg-manage-show>
+        </div>
+        <div class="flex-container sign-out-row" ng-if="page !== 'addShow' || !isWizard">
+            <span style="font-size: 10pt">WELCOME, {{user.firstName}}</span>
+            <span class="fa fa-sign-out" style="margin-left:15px;" ng-click="signOut();"></span>
+        </div>
+        
+        <div class="main-container" ng-if="!isWizard">
+            <div class="side-pane">
+                <div class="header-side-pane"><img src="~/Content/assets/tglogowhite.png" /></div>
+                <div class="menu-item" ng-class="page==='shows'?'menu-item-selected' :''"><span class="fa fa-home"></span><span ng-click="showView('shows')" class="nudge-right">Homepage</span></div>
+                <div ng-if="false" class="menu-item" ng-class="page==='channels'?'menu-item-selected' :''"><span class="fa fa-tasks"></span><span ng-click="showView('channels')" class="nudge-right">My Channels</span></div>
+                <div ng-if="false" class="menu-item" ng-class="page==='shows'?'menu-item-selected' :''"><span class="fa fa-video-camera"></span><span ng-click="showView('shows')" class="nudge-right">My Shows</span></div>
+                <div ng-if="false" class="menu-item" ng-class="page==='settings'?'menu-item-selected' :''"><span class="fa fa-cog"></span><span ng-click="showView('settings')" class="nudge-right">Account settings</span></div>
+                <hr class="seperator nudge-right-xxl nudge-left-xxl" />
+                <div class="awaiting-item" ng-if="false"><span class="fa fa-clock-o"></span><span class="nudge-right">{{awaitingChannels}} Channels awaiting approval</span></div>
+                <div class="awaiting-item" ><span class="fa fa-clock-o"></span><span class="nudge-right">2 Shows awaiting approval</span></div>
+                <div class="awaiting-item"><span class="fa fa-thumbs-up"></span><span class="nudge-right">1 Show Approved</span><br /> + Add Stream Data</div>
+            </div>
+        
+            <div class="main-pane">
+                <div ng-if="loaded">
+                    <div class="main-pane-header" ng-if="page === 'shows'">
+                        <img src="~/Content/assets/tglogocircularwhite.png" style="vertical-align:top;" />
+                        <span class="nudge-right">{{user.companyName}}</span>
+                        <span ng-if="user.faceBook" class="fa fa-facebook-square nudge-right"></span>
+                        <span ng-if="user.twitter" class="fa fa-twitter nudge-right"></span>
+                        <span ng-if="user.tagLine" class="tagline">Specializing in art, theater, and music.  Simply the best entertainment. Ever.</span>
+                    </div>
+
+                    <div class="main-pane-header" ng-if="page === 'channels'">
+                        <span class="fa fa-tasks nudge-right"></span>
+                        <span class="nudge-right">MY CHANNELS SETTINGS</span>
+                    </div>
+
+                    <div ng-if="false" class="main-pane-header" ng-if="page === 'shows'  && !selectedShow">
+                        <span class="fa fa-video-camera nudge-right"></span>
+                        <span class="nudge-right">MY SHOWS</span>
+                        <tg-tab-control tabs="tabs.shows"></tg-tab-control>
+                    </div>
+
+                    <div class="main-pane-header" ng-if="page === 'settings'">
+                        <span class="fa fa-cog nudge-right"></span>
+                        <span class="nudge-right">ACCOUNT SETTINGS</span>
+                        <tg-tab-control tabs="tabs.settings"></tg-tab-control>
+                    </div>
+                    <div class="main-pane-content">
+                        <div ng-if="page === 'main'">
+                            <div class="flexAcross" ng-if="!selectedShow">
+                                <div class="fItem" style="width:80%">
+                                    <span class="listing-lineup">MY UPCOMING PROGRAMMING</span>
+                                </div>
+                                <div class="fItem">
+                                    <tg-button button-class="button-lavender" left-icon-class="fa fa-film" text="ADD CONTENT" text-label-class="buttonLabel"></tg-button>
+                                </div>
+                            </div>
+                            <hr class="seperator" />
+                            <show-listing show-list="shows" selected-show="selectedShow" genres="genres" show-types="showTypes"></show-listing>
+                        </div>
+
+                        <div ng-if="page === 'channels'">
+                            <div class="flexAcross">
+                                <div class="fItem" style="width:80%">
+
+                                </div>
+                                <div class="fItem">
+                                    <tg-button button-class="button-lavender" left-icon-class="fa fa-film" text="ADD CHANNEL" text-label-class="buttonLabel"></tg-button>
+                                </div>
+                            </div>
+                            <div ng-repeat="show in channels">
+                                <div class="flexAcross">
+                                    <div class="fItem video" style="background-image: url('/Content/assets/'{{show.image}});">
+                                    
+                                    </div>
+                                    <div class="fItem nudge-right">
+                                        <div><span class="date">{{show.date}}</span><span class="title">{{show.title}}</span></div>
+                                        <div class="description">{{show.description}}</div>
+                                    </div>
+                                    <div class="fItem ticket">
+                                        <span class="fa fa-ticket nudge-right"></span>800 Sold<br />
+                                        <span class="fa fa-flag nudge-right"></span>Sold Out
+                                    </div>
+                                </div>
+                            </div>
+                            UPCOMING EVENTS
+                            <div class="flexAcross">
+                                <div ng-repeat="show in shows" style="height:80px; width:120px;">
+                                    <div class="fItem" style="padding-left:80px; background-repeat: no-repeat; padding-left: 20px; background-image: url('/Content/assets/'{{show.image}}); height: 80px; width: 120px; display: inline-block; ">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div ng-show="page === 'shows'">
+                            
+                            <div class="flex-container upcoming-add-row" ng-if="!selectedShow">
+                                <div class="flex-item-stretch" ng-if="false">
+                                    <span>UPCOMING SHOWS</span><span class="fa fa-list-ul nudge-right"></span><span class="fa fa-calendar nudge-right"></span>
+                                </div>
+                                <div class="flex-item-stretch">
+                                    <span>MY UPCOMING PROGRAMMING</span>
+                                </div>
+
+                                <tg-button button-class="button-lavender"
+                                           left-icon-class="fa fa-film"
+                                           text="ADD SHOW"
+                                           text-label-class="buttonLabel"
+                                           on-click="showView('addShow', true)"
+                                           plus-sign="true"></tg-button>
+                            </div>
+                            
+                            <show-listing show-list="shows" selected-show="selectedShow" genres="genres" show-types="showTypes"></show-listing>
+                        </div>
+
+                        <div ng-if="page === 'settings'">
+                            <div class="flexAcross">
+                                <div class="fItem">
+                                    <div class="form-group">
+                                        <div class="avatar"></div>
+                                        <div class="form-control-avatar nudge-right">
+                                            <label>UPLOAD LOGO</label>
+                                            <input type="text" class="form-control" ng-model="ProducerRegistrationForm1.firstName" id="firstName" name="firstName" required />
+                                            <br /><br /><span class="choose-button">CHOOSE</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flexAcross">
+                                <div class="fItem">
+                                    <div class="form-group">
+                                        <label>FACEBOOK URL</label>
+                                        <span class="fa fa-facebook-square"></span><input type="text" class="form-control" ng-model="ProducerRegistrationForm1.firstName" id="firstName" name="firstName" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>TWITTER URL</label>
+                                        <span class="fa fa-twitter-square"></span><input type="text" class="form-control" ng-model="ProducerRegistrationForm1.firstName" id="firstName" name="firstName" required />
+                                    </div>
+                                </div>
+                                <div class="fItem">
+                                    <div class="form-group form-settings-text-area">
+                                        <label>PRODUCER TAGLINE</label>
+                                        <textarea rows="4" class="form-control" ng-model="tagline" id="firstName" name="firstName" required></textarea><br />
+                                        Using {{tagline.length}} of 80 possible characters.
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="seperator" />
+                            <div class="save-changes"><span ng-click="showView('main')" class="nudge-right">SAVE CHANGES</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="!loaded">
+                    <spinner spin-if="!loaded"></spinner>
+                </div>
+            
+            </div>
+        </div>
+        <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="/bower_components/moment/moment.js"></script>
+        <script src="/bower_components/angularjs/angular.min.js"></script>
+        <script src="/bower_components/underscore/underscore-min.js"></script>
+        <script src="/bower_components/ngstorage/ngStorage.min.js"></script>
+        <script src="/bower_components/ladda/dist/spin.min.js"></script>
+        <script src="/bower_components/ladda/dist/ladda.min.js"></script>
+        <script src="~/bower_components/node-uuid/uuid.js"></script>
+        <script src="/bower_components/angular-bootstrap-datetimepicker/src/js/datetimepicker.js"></script>
+        <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+        <script src="/Modules/Producer.js"></script>
+        <script src="/Modules/Common/tgButton.js"></script>
+        <script src="/Modules/Common/onlyDigits.js"></script>
+        <script src="/Modules/Common/tgTabControl.js"></script>
+        <script src="/Modules/Common/tgShowListing.js"></script>
+        <script src="/Modules/Producer/tgManageShow.js"></script>
+        <script src="/Modules/Common/dataService.js"></script>
+        <script src="/Modules/Common/arrays.js"></script>
+        <script src="/Modules/Common/tgInlineModal.js"></script>
+        <script src="/Modules/Common/spinner.js"></script>
+        <script src="/Modules/Common/tgInfoTooltip.js"></script>
+        <script src="/Modules/Common/dateFormatter.js"></script>
+        <script src="/Modules/Common/uuidService.js"></script>
+        <script src="/Modules/Common/fileUploader.js"></script>
+        <script src="/Modules/Common/fileUploadButton.js"></script>
+        <script src="/Modules/Common/fileUploadView.js"></script>
+        <script src="/Modules/Common/fileSizer.js"></script>
+        <script src="/amp/amp.min.js"></script>
+        <script src="/Modules/Common/amp.js"></script>
+        <script src="/Modules/Common/settings.js"></script>
+        <script src="/Modules/Common/ladda.js"></script>
+    </body>
+</html>

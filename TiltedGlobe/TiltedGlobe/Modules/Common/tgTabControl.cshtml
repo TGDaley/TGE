@@ -1,0 +1,4 @@
+﻿<span class="ucase">
+    <!--class="tab-left" style="margin-left:60px;"-->
+    <span ng-repeat="tab in tabs" class="{{$first ? 'tab-left' : $last ? 'tab-right' : 'tab'}} {{tab.selected ? 'tab-selected' : ''}}" ng-click="changeView(tab)" >{{tab.name}}</span>
+</span>

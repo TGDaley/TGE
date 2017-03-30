@@ -1,0 +1,28 @@
+{
+  "name": "tiltedglobe",
+  "version": "0.0.1",
+  "description": "Video streaming service",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angularjs": "~1.4.0",
+    "jquery": "~2.1.4",
+    "angular-ui-router": "~0.2.15",
+    "angular-re-captcha": "~0.2.0",
+    "ng-country-select": "~0.1.4",
+    "underscore": "~1.8.3",
+    "ladda": "~0.9.8",
+    "bootstrap": "~3.3.5",
+    "fontawesome": "~4.3.0",
+    "ngstorage": "~0.3.7",
+    "angular-bootstrap-datetimepicker": "~0.3.13",
+    "node-uuid": "~1.4.3",
+    "angular-bootstrap": "~0.13.2"
+  }
+}

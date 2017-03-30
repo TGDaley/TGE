@@ -1,0 +1,62 @@
+﻿<div>
+    <div class="flex-container">
+        <div class="form-column-registration-spacing">
+            <label class="form-label-question align-right">FIRST NAME</label>
+            <input type="text" class="form-control" ng-model="user.firstName" id="firstName" name="firstName" required />
+            <div><span class="help-block">&nbsp;</span><span ng-show="form.viewerRegistration.firstName.$invalid && (form.viewerRegistration.firstName.$dirty || form.viewerRegistration.firstName.$touched || form.viewerRegistration.$submitted)" class="help-block">First name is required</span></div>
+        </div>
+        <div class="form-column-registration-spacing">
+            <label class="form-label-question align-right">LAST NAME</label>
+            <input type="text" class="form-control" ng-model="user.lastName" id="lastName" name="lastName" required />
+            <span ng-show="form.viewerRegistration.lastName.$invalid && (form.viewerRegistration.lastName.$dirty || form.viewerRegistration.lastName.$touched || form.viewerRegistration.$submitted)" class="help-block">Last name is required</span>
+        </div>
+    </div>
+    <div class="flex-container">
+        <div class="form-column-registration-spacing fWide">
+            <label class="form-label-question align-right">COMPANY NAME</label>
+            <input type="text" class="form-control" ng-model="user.companyName" id="companyName" name="companyName" required />
+            <span class="help-block">&nbsp;</span><span ng-show="form.viewerRegistration.companyName.$invalid && (form.viewerRegistration.companyName.$dirty || form.viewerRegistration.companyName.$touched || form.viewerRegistration.$submitted)" class="help-block">Company name is required</span>
+        </div>
+        <div class="form-column-registration-spacing">
+            <label class="form-label-question align-right">YOUR POSITION</label>
+            <input type="text" class="form-control" ng-model="user.yourPosition" id="yourPosition" name="yourPosition" required />
+            <p ng-show="form.viewerRegistration.yourPosition.$invalid && (form.viewerRegistration.yourPosition.$dirty || form.viewerRegistration.yourPosition.$touched || form.viewerRegistration.$submitted)" class="help-block">Position is required</p>
+        </div>
+    </div>
+    <div class="flex-container">
+        <div class="form-column-registration-spacing fWide">
+            <label class="form-label-question align-right">COMPANY ADDRESS</label>
+            <input type="text" class="form-control" ng-model="user.companyAddress" id="companyAddress" name="companyAddress" required />
+            <span class="help-block">&nbsp;</span><span ng-show="form.viewerRegistration.companyAddress.$invalid && (form.viewerRegistration.companyAddress.$dirty || form.viewerRegistration.companyAddress.$touched || form.viewerRegistration.$submitted)" class="help-block">Address is required</span>
+        </div>
+        <div class="form-column-registration-spacing">
+            <label class="form-label-question align-right">CITY &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <input type="text" class="form-control" ng-model="user.city" id="city" name="city" required />
+            <p ng-show="form.viewerRegistration.city.$invalid && (form.viewerRegistration.city.$dirty || form.viewerRegistration.city.$touched || form.viewerRegistration.$submitted)" class="help-block">City is required</p>
+        </div>
+    </div>
+    <div class="flex-container">
+        <div class="form-column-registration-spacing" id="stateProvSelect">
+            <label class="form-label-question align-right">STATE/PROVINCE/REGION</label>
+            <input type="text" class="form-control" ng-model="user.state" id="stateProv" name="stateProv" />
+            <span class="help-block">&nbsp;</span><span ng-show="user.country==='US' && (!form.viewerRegistration.stateProv.$dirty || !user.state)" class="help-block">State/Province/Region is required</span>
+        </div>
+        <div class="form-column-registration-spacing">
+            <label class="form-label-question align-right">COUNTRY</label>
+            <country-select class="form-control" cs-priorities="US, CA, GB" ng-model="user.country" id="country" name="country" required></country-select>
+            <p ng-show="form.viewerRegistration.country.$invalid && (form.viewerRegistration.country.$dirty || form.viewerRegistration.country.$touched || form.viewerRegistration.$submitted)" class="help-block">Country is required</p>
+        </div>
+        <div class="form-column-registration-spacing">
+            <label class="form-label-question align-right">ZIP/POSTAL CODE</label>
+            <input class="form-control" type="text" ng-model="user.postalCode" id="postalCode" name="postalCode" required />
+            <p ng-show="form.viewerRegistration.postalCode.$invalid && (form.viewerRegistration.postalCode.$dirty || form.viewerRegistration.postalCode.$touched || form.viewerRegistration.$submitted)" class="help-block">Zip/Postal Code is required</p>
+        </div>
+    </div>
+    <div class="flex-container">
+        <div class="form-column-registration-spacing">
+            <label class="form-label-question align-right">COMPANY PHONE</label>
+            <input class="form-control" type="text" ng-model="user.companyPhone" id="phoneNumber" name="phoneNumber" required />
+            <p ng-show="form.viewerRegistration.phoneNumber.$invalid && (form.viewerRegistration.phoneNumber.$dirty || form.viewerRegistration.phoneNumber.$touched || form.viewerRegistration.$submitted)" class="help-block">Company phone is required</p>
+        </div>
+    </div>
+</div>

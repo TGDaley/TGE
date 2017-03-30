@@ -1,0 +1,69 @@
+﻿@using System.Configuration
+<!DOCTYPE html>
+<html ng-app="TiltedGlobe" >
+<head>
+    <base href="/" />
+    <title ng-bind="models.helloAngular"></title>
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <link href='http://fonts.googleapis.com/css?family=Oxygen|Oxygen:700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/bower_components/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/bower_components/ladda/dist/ladda-themeless.min.css" />
+    <link rel="stylesheet" href="/Content/common.css" />
+    <link rel="stylesheet" href="/Content/form.css" />
+    <link rel="stylesheet" href="/Content/Site.css"/>
+    <link rel="stylesheet" href="/Content/inline-modal.css" />
+    <link rel="stylesheet" href="/Content/button.css" />
+    <link rel="stylesheet" href="/Content/flexBox.css" />
+    
+</head>
+<body ng-cloak>
+    <div class="header-main">
+
+    </div>
+
+    <tg-inline-modal>
+        <div ui-view="header" class="inline-modal-header"></div>
+        <tg-inline-modal-content>
+            <div ui-view="mainContent"></div>
+        </tg-inline-modal-content>
+        <tg-inline-modal-footer>
+            <div ui-view="footer" class="inline-modal-footer"></div>
+        </tg-inline-modal-footer>
+    </tg-inline-modal>
+
+
+    <viewer-registration ng-if="view === 'viewer'"></viewer-registration>
+
+    @*<producer-registration ></producer-registration>*@
+
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/angularjs/angular.min.js"></script>
+    <script src="/bower_components/underscore/underscore-min.js"></script>
+    <script src="~/bower_components/ladda/dist/spin.min.js"></script>
+    <script src="~/bower_components/ladda/dist/ladda.min.js"></script>
+    <script src="/bower_components/ngstorage/ngStorage.min.js"></script>
+    <!-- bower:js -->
+    <!-- endbower -->
+
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="/bower_components/ng-country-select/dist/ng-country-select.min.js"></script>
+    <script src="/bower_components/angular-re-captcha/angular-re-captcha.js"></script>
+    <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="/Modules/TiltedGlobe.js"></script>
+    <script src="/Modules/Authentication/emailValidator.js"></script>
+    <script src="/Modules/Authentication/loginController.js"></script>
+    <script src="/Modules/Authentication/producerRegistrationController.js"></script>
+    <script src="/Modules/Authentication/viewerRegistrationController.js"></script>
+    <script src="/Modules/AuthHttpResponseInterceptor.js"></script>
+    <script src="/Modules/Authentication/routes.js"></script>
+
+    <script src="/Modules/Common/tgButton.js"></script>
+    <script src="/Modules/Common/dataService.js"></script>
+    <script src="/Modules/Common/tgInlineModal.js"></script>
+    <script src="/Modules/Common/tgInfoTooltip.js"></script>
+    <script src="/Modules/Authentication/recaptcha.js"></script>
+    <script src="~/Modules/Common/ladda.js"></script>
+    <!-- inject:js -->
+    <!-- endinject -->
+</body>
+</html>
